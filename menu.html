@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/menu.css" />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <script src="JS/main.js"></script>
+    <title>Kolbe - Menu</title>
+  </head>
+  <body class="fade-out">
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+      <div class="auth-links">
+        <li style="list-style: none">
+          <a href="favorites.html" class="auth-link">Favorites</a>
+        </li>
+        <li style="list-style: none">
+          <a href="signup.html" class="auth-link">Login / Sign Up</a>
+        </li>
+      </div>
+    </nav>
+
+    <div class="menu-container">
+      <!-- Favorites Display Section -->
+      <div
+        class="favorites-display"
+        id="favoritesDisplay"
+        style="display: none"
+      >
+        <h2>My Favorites</h2>
+        <div class="favorites-list" id="favoritesList">
+          <!-- Favorites will be populated here -->
+        </div>
+      </div>
+
+      <div class="menu-grid">
+        <!-- Spicy Potato -->
+        <div class="menu-item" data-item-id="110">
+          <img src="images/margheritapizza.jpg" alt="Spicy potato" />
+          <div class="menu-item-content">
+            <h3>Margherita</h3>
+            <div class="tags">
+              <span class="tag">Fresh basil</span>
+              <span class="tag">Mozzarella</span>
+              <span class="tag">Tomato sauce</span>
+            </div>
+            <label for="choice-110">Choose:</label>
+            <select
+              id="choice-110"
+              class="choice"
+              name="choice-110"
+              style="direction: ltr"
+              data-single="20.30"
+              data-double="30.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$20.30</p>
+            <button type="button" class="add-to-cart" data-item-id="110">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Pepperoni -->
+        <div class="menu-item" data-item-id="111">
+          <img
+            src="images/istockphoto-1442417585-612x612.jpg"
+            alt="Pepperoni"
+          />
+          <div class="menu-item-content">
+            <h3>Pepperoni</h3>
+            <div class="tags">
+              <span class="tag">Spicy</span>
+              <span class="tag">Hot</span>
+            </div>
+            <label for="choice-111">Choose:</label>
+            <select
+              id="choice-111"
+              class="choice"
+              name="choice-111"
+              style="direction: ltr"
+              data-single="25.00"
+              data-double="35.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$25.00</p>
+            <button type="button" class="add-to-cart" data-item-id="111">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Pasta -->
+        <div class="menu-item" data-item-id="112">
+          <img src="images/1712661.jpg" alt="Pasta" />
+          <div class="menu-item-content">
+            <h3>Veggie Pizza</h3>
+            <div class="tags">
+              <span class="tag">Vegetarian</span>
+              <span class="tag">Fresh vegetables</span>
+              <span class="tag">Cheesy</span>
+            </div>
+            <label for="choice-112">Choose:</label>
+            <select
+              id="choice-112"
+              class="choice"
+              name="choice-112"
+              style="direction: ltr"
+              data-single="30.00"
+              data-double="40.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$30.00</p>
+            <button type="button" class="add-to-cart" data-item-id="112">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Chicken and Mushroom Pizza -->
+        <div class="menu-item" data-item-id="113">
+          <img
+            src="images/dcd061ae-d693-4dc5-a117-aabb6c48a952.jpeg"
+            alt="Chicken and Mushroom Pizza"
+          />
+          <div class="menu-item-content">
+            <h3>Chicken and Mushroom Pizza</h3>
+            <div class="tags">
+              <span class="tag">Grilled chicken</span>
+              <span class="tag">Fresh mushrooms</span>
+              <span class="tag">Cheesy</span>
+            </div>
+            <label for="choice-113">Choose:</label>
+            <select
+              id="choice-113"
+              class="choice"
+              name="choice-113"
+              style="direction: ltr"
+              data-single="22.00"
+              data-double="32.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$22.00</p>
+            <button type="button" class="add-to-cart" data-item-id="113">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Italian Nachos -->
+        <div class="menu-item" data-item-id="114">
+          <img src="images/61f67055e1c10.jpg" alt="Italian nachos" />
+          <div class="menu-item-content">
+            <h3>Roast Beef Pizza</h3>
+            <div class="tags">
+              <span class="tag">Roast beef</span>
+              <span class="tag">Bell pepper</span>
+              <span class="tag">Mozzarella</span>
+            </div>
+            <label for="choice-114">Choose:</label>
+            <select
+              id="choice-114"
+              class="choice"
+              name="choice-114"
+              style="direction: ltr"
+              data-single="20.00"
+              data-double="30.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$20.00</p>
+            <button type="button" class="add-to-cart" data-item-id="114">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Tomato Soup -->
+        <div class="menu-item" data-item-id="115">
+          <img src="images/pizzzza.jpg" alt="Tomato soup" />
+          <div class="menu-item-content">
+            <h3>Kolbe Special Pizza</h3>
+            <div class="tags">
+              <span class="tag">Cold cuts</span>
+              <span class="tag">Sausage</span>
+              <span class="tag">Olives</span>
+            </div>
+            <label for="choice-115">Choose:</label>
+            <select
+              id="choice-115"
+              class="choice"
+              name="choice-115"
+              style="direction: ltr"
+              data-single="12.00"
+              data-double="22.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$12.00</p>
+            <button type="button" class="add-to-cart" data-item-id="115">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Grilled Salmon -->
+        <div class="menu-item" data-item-id="116">
+          <img src="images/meat-and-mushroom.jpg" alt="Grilled salmon" />
+          <div class="menu-item-content">
+            <h3>Meat and Mushroom Pizza</h3>
+            <div class="tags">
+              <span class="tag">Ground beef</span>
+              <span class="tag">Fresh mushrooms</span>
+              <span class="tag">Special sauce</span>
+            </div>
+            <label for="choice-116">Choose:</label>
+            <select
+              id="choice-116"
+              class="choice"
+              name="choice-116"
+              style="direction: ltr"
+              data-single="18.00"
+              data-double="28.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$18.00</p>
+            <button type="button" class="add-to-cart" data-item-id="116">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Chorizo Pizza -->
+        <div
+          class="menu-item"
+          data-item-id="117"
+          data-item-name="Chorizo Pizza"
+        >
+          <img src="images/AH5_5643-scaled.jpg" alt="Chorizo Pizza" />
+          <div class="menu-item-content">
+            <h3>Chorizo Pizza</h3>
+            <div class="tags">
+              <span class="tag">Chorizo sausage</span>
+              <span class="tag">Red hot pepper</span>
+              <span class="tag">Stretchy cheese</span>
+            </div>
+            <label for="choice-117">Choose:</label>
+            <select
+              id="choice-117"
+              class="choice"
+              name="choice-117"
+              style="direction: ltr"
+              data-single="18.00"
+              data-double="28.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$18.00</p>
+            <button
+              type="button"
+              class="add-to-cart"
+              data-item-id="117"
+              data-item-name="Chorizo Pizza"
+            >
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Mixed Pizza -->
+        <div class="menu-item" data-item-id="118">
+          <img src="images/puzzzza.png" alt="Mixed Pizza" />
+          <div class="menu-item-content">
+            <h3>Mixed Pizza</h3>
+            <div class="tags">
+              <span class="tag">Beef and chicken ham</span>
+              <span class="tag">Black olives</span>
+              <span class="tag">Pizza cheese</span>
+            </div>
+            <label for="choice-118">Choose:</label>
+            <select
+              id="choice-118"
+              class="choice"
+              name="choice-118"
+              style="direction: ltr"
+              data-single="18.00"
+              data-double="28.00"
+            >
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+            </select>
+            <p class="price">$18.00</p>
+            <button type="button" class="add-to-cart" data-item-id="118">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+        <!-- Regular Burger -->
+        <div class="menu-item" data-item-id="119">
+          <img
+            src="images/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg"
+            alt="Regular Burger"
+          />
+          <div class="menu-item-content">
+            <h3>Regular Burger</h3>
+            <div class="tags">
+              <span class="tag">Grilled beef</span>
+            </div>
+            <p class="price">$18.00</p>
+            <button type="button" class="add-to-cart" data-item-id="119">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Cheeseburger -->
+        <div class="menu-item" data-item-id="120">
+          <img src="images/cheezburger.jpg" alt="Cheeseburger" />
+          <div class="menu-item-content">
+            <h3>Cheeseburger</h3>
+            <div class="tags">
+              <span class="tag">Melted cheese</span>
+              <span class="tag">Fresh beef</span>
+            </div>
+            <p class="price">$20.00</p>
+            <button type="button" class="add-to-cart" data-item-id="120">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Kolbe Special Burger -->
+        <div class="menu-item" data-item-id="121">
+          <img
+            src="images/1199662_180-1024x684.jpg"
+            alt="Kolbe Special Burger"
+          />
+          <div class="menu-item-content">
+            <h3>Kolbe Special Burger</h3>
+            <div class="tags">
+              <span class="tag">Special sauce</span>
+              <span class="tag">Premium ingredients</span>
+              <span class="tag">House specialty</span>
+            </div>
+            <p class="price">$22.00</p>
+            <button type="button" class="add-to-cart" data-item-id="121">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Mushroom and Cheese Burger -->
+        <div class="menu-item" data-item-id="122">
+          <img
+            src="images/mushroom_and_cheese_hamburger_w_hese_tazegi.jpg"
+            alt="Mushroom and Cheese Burger"
+          />
+          <div class="menu-item-content">
+            <h3>Mushroom and Cheese Burger</h3>
+            <div class="tags">
+              <span class="tag">Fresh mushrooms</span>
+              <span class="tag">Mozzarella</span>
+              <span class="tag">Garlic sauce</span>
+            </div>
+            <p class="price">$22.00</p>
+            <button type="button" class="add-to-cart" data-item-id="122">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Chorizo Burger -->
+        <div class="menu-item" data-item-id="123">
+          <img src="images/2_1699867666_7976.jpg" alt="Chorizo Burger" />
+          <div class="menu-item-content">
+            <h3>Chorizo Burger</h3>
+            <div class="tags">
+              <span class="tag">Chorizo sausage</span>
+              <span class="tag">Spicy</span>
+              <span class="tag">Smoky chili sauce</span>
+            </div>
+            <p class="price">$22.00</p>
+            <button type="button" class="add-to-cart" data-item-id="123">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Hot Dog -->
+        <div class="menu-item" data-item-id="124">
+          <img src="images/هات-داگ.jpg" alt="Hot Dog" />
+          <div class="menu-item-content">
+            <h3>Hot Dog</h3>
+            <div class="tags">
+              <span class="tag">Classic hot dog</span>
+              <span class="tag">Mustard & ketchup</span>
+              <span class="tag">Fresh bun</span>
+            </div>
+            <p class="price">$8.00</p>
+            <button type="button" class="add-to-cart" data-item-id="124">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Mushroom and Cheese Hot Dog -->
+        <div class="menu-item" data-item-id="125">
+          <img
+            src="images/طرز-تهیه-هات-داگ-خانگی.jpg"
+            alt="Mushroom and Cheese Hot Dog"
+          />
+          <div class="menu-item-content">
+            <h3>Mushroom and Cheese Hot Dog</h3>
+            <div class="tags">
+              <span class="tag">Mushrooms and cheese</span>
+              <span class="tag">Gourmet style</span>
+            </div>
+            <p class="price">$10.00</p>
+            <button type="button" class="add-to-cart" data-item-id="125">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Krakow Sausage -->
+        <div class="menu-item" data-item-id="126">
+          <img src="images/pooooza.png" alt="Krakow Sausage" />
+          <div class="menu-item-content">
+            <h3>Krakow</h3>
+            <div class="tags">
+              <span class="tag">Krakow sausage</span>
+              <span class="tag">Traditional recipe</span>
+            </div>
+            <p class="price">$12.00</p>
+            <button type="button" class="add-to-cart" data-item-id="126">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Cocktail Sausage -->
+        <div class="menu-item" data-item-id="127">
+          <img src="images/132638092866500.jpg" alt="Cocktail Sausage" />
+          <div class="menu-item-content">
+            <h3>Cocktail</h3>
+            <div class="tags">
+              <span class="tag">Cocktail sausage</span>
+              <span class="tag">Perfect appetizer</span>
+            </div>
+            <p class="price">$8.00</p>
+            <button type="button" class="add-to-cart" data-item-id="127">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Beef Ham Sandwich -->
+        <div class="menu-item" data-item-id="128">
+          <img src="images/ساندویچ-ژامبون-گوشت.jpg" alt="Beef Ham Sandwich" />
+          <div class="menu-item-content">
+            <h3>Beef Ham</h3>
+            <div class="tags">
+              <span class="tag">Beef ham</span>
+              <span class="tag">Cheese</span>
+              <span class="tag">Lettuce and mayonnaise</span>
+            </div>
+            <p class="price">$15.00</p>
+            <button type="button" class="add-to-cart" data-item-id="128">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Chicken Ham Sandwich -->
+        <div class="menu-item" data-item-id="129">
+          <img src="images/0026188_-_550.jpeg" alt="Chicken Ham Sandwich" />
+          <div class="menu-item-content">
+            <h3>Chicken Ham</h3>
+            <div class="tags">
+              <span class="tag">Chicken ham</span>
+              <span class="tag">White sauce</span>
+              <span class="tag">Fresh vegetables</span>
+            </div>
+            <p class="price">$14.00</p>
+            <button type="button" class="add-to-cart" data-item-id="129">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Roasted Ham Sandwich -->
+        <div class="menu-item" data-item-id="130">
+          <img src="images/janbon-tanori.jpg" alt="Roasted Ham Sandwich" />
+          <div class="menu-item-content">
+            <h3>Roasted Ham</h3>
+            <div class="tags">
+              <span class="tag">Roasted ham</span>
+              <span class="tag">Mozzarella</span>
+              <span class="tag">Grilled to perfection</span>
+            </div>
+            <p class="price">$16.00</p>
+            <button type="button" class="add-to-cart" data-item-id="130">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Side Dishes -->
+        <!-- Kolbe Special Fries -->
+        <div class="menu-item" data-item-id="131">
+          <img src="images/sibzamini-paniri.jpg" alt="Kolbe Special Fries" />
+          <div class="menu-item-content">
+            <h3>Kolbe Special Fries</h3>
+            <div class="tags">
+              <span class="tag">House special seasoning</span>
+              <span class="tag">Crispy texture</span>
+              <span class="tag">Perfect side dish</span>
+            </div>
+            <p class="price">$8.00</p>
+            <button type="button" class="add-to-cart" data-item-id="131">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Baked Potato -->
+        <div class="menu-item" data-item-id="132">
+          <img src="images/img_682617.jpeg" alt="Baked Potato" />
+          <div class="menu-item-content">
+            <h3>Baked Potato</h3>
+            <div class="tags">
+              <span class="tag">Fresh baked</span>
+              <span class="tag">Butter and herbs</span>
+              <span class="tag">Healthy option</span>
+              <span class="tag">Healthy option</span>
+            </div>
+            <p class="price">$6.00</p>
+            <button type="button" class="add-to-cart" data-item-id="132">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- French Fries -->
+        <div class="menu-item" data-item-id="133">
+          <img src="images/سیب-زمینی-سرخ-کرده.webp" alt="French Fries" />
+          <div class="menu-item-content">
+            <h3>French Fries</h3>
+            <div class="tags">
+              <span class="tag">Great with burgers</span>
+              <span class="tag">Golden crispy</span>
+              <span class="tag">Classic side</span>
+            </div>
+            <p class="price">$5.00</p>
+            <button type="button" class="add-to-cart" data-item-id="133">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Garlic Bread -->
+        <div class="menu-item" data-item-id="134">
+          <img
+            src="images/calindairy-blog-garlic-bread-030920-002.webp"
+            alt="Garlic Bread"
+          />
+          <div class="menu-item-content">
+            <h3>Garlic Bread</h3>
+            <div class="tags">
+              <span class="tag">Fresh baked</span>
+              <span class="tag">Garlic butter</span>
+              <span class="tag">Perfect starter</span>
+            </div>
+            <p class="price">$4.00</p>
+            <button type="button" class="add-to-cart" data-item-id="134">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Caesar Salad -->
+        <div class="menu-item" data-item-id="135">
+          <img src="images/Caesar-salad-1.jpg" alt="Caesar Salad" />
+          <div class="menu-item-content">
+            <h3>Caesar Salad</h3>
+            <div class="tags">
+              <span class="tag">Grilled or fried chicken</span>
+              <span class="tag">Fresh romaine</span>
+              <span class="tag">Caesar dressing</span>
+            </div>
+            <p class="price">$12.00</p>
+            <button type="button" class="add-to-cart" data-item-id="135">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+
+        <!-- Garden Salad -->
+        <div class="menu-item" data-item-id="136">
+          <img src="images/salad-fasl-min.jpg" alt="Garden Salad" />
+          <div class="menu-item-content">
+            <h3>Garden Salad</h3>
+            <div class="tags">
+              <span class="tag"
+                >Seasonal vegetables mix (lettuce, cucumber, tomato,
+                carrot)</span
+              >
+              <span class="tag">Light diet friendly</span>
+              <span class="tag">Fresh and healthy</span>
+            </div>
+            <p class="price">$10.00</p>
+            <button type="button" class="add-to-cart" data-item-id="136">
+              Add to Favorites
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <h2>Contact With Us</h2>
+      <div class="socials">
+        <a
+          href="https://www.linkedin.com/company/kolbe"
+          class="fa fa-linkedin"
+          target="_blank"
+          rel="noopener"
+        ></a>
+        <a
+          href="https://www.instagram.com/pizza.kolbeh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          class="fa fa-instagram"
+          target="_blank"
+          rel="noopener"
+        ></a>
+        <a
+          href="https://www.facebook.com/kolberestaurant"
+          class="fa fa-facebook"
+          target="_blank"
+          rel="noopener"
+        ></a>
+        <a href="mailto:contact@kolbe.com" class="fa fa-envelope"></a>
+        <a href="tel:+982186020720" class="fa fa-phone"></a>
+      </div>
+    </div>
+  </body>
+</html>
