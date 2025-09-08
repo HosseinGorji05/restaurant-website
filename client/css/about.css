@@ -1,0 +1,171 @@
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  background-image: url(/client/images/1294828.jpg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.5s ease;
+}
+
+.image-container {
+  background-image: url("/client/images/87ce4fc1-f72c-451b-96d3-9ea0a6bbf1fc.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center ;
+  height: 80vh; /* control image height */
+  width: 100%;
+}
+
+.content {
+  margin: 20px auto;
+  text-align: center;
+  width: 80%;
+  max-width: 700px;
+  background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body p{
+  color: aliceblue;
+  font-size: 20px;
+}
+
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  flex: 1; /* Make links fill space so button stays in frame */
+
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: larger;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: orange;
+}
+
+/* Auth button container */
+.auth-links {
+  margin-left: auto; /* Push button to far right */
+  flex-shrink: 0; /* Don't let it shrink */
+  display: flex;
+  gap: 20px;
+}
+
+/* Auth button styling */
+.auth-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  background: #ff6b35;
+  border-radius: 5px;
+  transition: background 0.3s;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.auth-link:hover {
+  background: #e55a2e;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+ 
+  .contact-box {
+    color: orange;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+  }
+  
+  /* Social Icons */
+  .fa {
+    padding: 10px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: color var(--transition-speed) ease;
+  }
+  
+  .socials a {
+    font-size: 24px;
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .socials a:hover {
+    color: var(--primary-color);
+  }
+  
+  .fa-linkedin {
+    color: var(--text-color);
+  }
+  
+  .fa-instagram {
+    color: var(--instagram-color);
+  }
+  
+  .fa-facebook {
+    color: var(--text-color);
+  }
+  
+  .fa-envelope {
+    color: var(--email-color);
+  }
+  
+  .fa-phone {
+    color: var(--phone-color);
+  }
+  
+  .fa-linkedin:hover,
+  .fa-facebook:hover,
+  .fa-instagram:hover,
+  .fa-envelope:hover,
+  .fa-phone:hover {
+    color: orange;
+  }
