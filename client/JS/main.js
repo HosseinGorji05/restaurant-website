@@ -16,7 +16,7 @@
 
     document.addEventListener('DOMContentLoaded' , function(){
 
-      const loginButton = document.querySelector('.auth-link');
+      const loginButton = document.getElementById("loginButton");
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       const userEmail = localStorage.getItem('userEmail');
 
