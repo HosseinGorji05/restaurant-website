@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // DISABLE SUBMIT BUTTON
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'در حال ورود...';
+                submitButton.textContent = 'Logging in...';
             }
             
             console.log('Login attempt:', { email, passwordLength: password.length });
@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 console.error('Login error:', error);
-                showMessage(messageDiv, 'خطا در اتصال به سرور', 'error');
+                showMessage(messageDiv, 'Error connecting to server', 'error');
             } finally {
                 // ALWAYS RESET THE FORM STATE
                 isLoginSubmitting = false;
                 if (submitButton) {
                     submitButton.disabled = false;
-                    submitButton.textContent = 'ورود';
+                    submitButton.textContent = 'Login';
                 }
             }
         });
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // DISABLE SUBMIT BUTTON
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'در حال ثبت نام...';
+                submitButton.textContent = 'Signing up...';
             }
             
             console.log('Signup attempt:', { email, passwordLength: password.length });
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Handle different response statuses
                 if (response.status === 201) {
                     // SUCCESS - User created successfully
-                    showMessage(messageDiv, 'حساب کاربری با موفقیت ایجاد شد!', 'success');
+                    showMessage(messageDiv, 'Account created successfully!', 'success');
                     // Clear form
                     signupFormElement.reset();
                     // Switch to login form after success
@@ -179,33 +179,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                 } else if (response.status === 409) {
                     // CONFLICT - Email already exists
-                    showMessage(messageDiv, 'این ایمیل قبلاً ثبت شده است. لطفاً وارد شوید یا ایمیل دیگری استفاده کنید.', 'error');
+                    showMessage(messageDiv, 'This email is already registered. Please login or use a different email.', 'error');
                     
                 } else if (response.status === 400) {
                     // BAD REQUEST - Validation errors
                     let errorMessage = data.error || data.message;
                     if (errorMessage === 'Email and password required') {
-                        errorMessage = 'ایمیل و رمز عبور الزامی است';
+                        errorMessage = 'Email and password are required';
                     } else if (errorMessage === 'Password must be at least 6 characters') {
-                        errorMessage = 'رمز عبور باید حداقل ۶ کاراکتر باشد';
+                        errorMessage = 'Password must be at least 6 characters';
                     }
                     showMessage(messageDiv, errorMessage, 'error');
                     
                 } else {
                     // OTHER ERRORS (500, etc.)
-                    let errorMessage = data.message || data.error || 'خطا در ثبت نام';
+                    let errorMessage = data.message || data.error || 'Error during registration';
                     showMessage(messageDiv, errorMessage, 'error');
                 }
                 
             } catch (error) {
                 console.error('Signup error:', error);
-                showMessage(messageDiv, 'خطا در اتصال به سرور. لطفاً دوباره تلاش کنید.', 'error');
+                showMessage(messageDiv, 'Error connecting to server. Please try again.', 'error');
             } finally {
                 // ALWAYS RESET THE FORM STATE
                 isSignupSubmitting = false;
                 if (submitButton) {
                     submitButton.disabled = false;
-                    submitButton.textContent = 'ثبت نام';
+                    submitButton.textContent = 'Sign Up';
                 }
             }
         });
