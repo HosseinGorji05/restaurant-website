@@ -18,7 +18,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-image: url("/restaurant-website/client/images/pizza.jpg");  background-size: cover;
+  background-image: url("/client/images/pizza.jpg");  background-size: cover;
   background-position: center top 80%;
   background-repeat: no-repeat;
   background-color: black;
