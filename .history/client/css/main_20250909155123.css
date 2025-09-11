@@ -213,12 +213,6 @@ body {
     gap: 35px;
   }
 
-  .auth-links{
-    flex-direction: column;
-    
-
-  }
-
   .hero {
     width: 300px;
     height: 300px;
@@ -267,9 +261,4 @@ body h1{
   .contact-box h2 {
     font-size: 25px;
     margin-bottom: 15px;
-  }
-
-
-
-
-}
+  }}

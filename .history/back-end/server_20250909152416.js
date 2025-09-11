@@ -21,7 +21,9 @@ app.get('/test-db', (req, res) => {
     });
 });
 
-
+// TODO: Remove debug endpoints before production deployment
+/*
+// DEBUG ENDPOINTS - REMOVE IN PRODUCTION
 app.get('/debug-users', (req, res) => {
     db.all('SELECT id, email, password, created_at FROM users', (err, users) => {
       if (err) {
@@ -84,7 +86,7 @@ app.get('/api/users', (req, res) => {
       res.json({ users });
     });
 });
-
+*/
 
 app.listen(PORT , () => {
     console.log(`Server is running on  http://localhost:${PORT}`);
