@@ -18,7 +18,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-image: url("/client/images/pizza.jpg");
+  background-image: url("../images/pizza.jpg");
   background-size: cover;
   background-position: center top 80%;
   background-repeat: no-repeat;
@@ -208,14 +208,28 @@ body {
 }
 /* Media Queries */
 @media (max-width: 768px) {
-  .nav-links {
-    flex-direction: row;
-    gap: 35px;
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 15px;
   }
+
+  .nav-links {
+    gap: 15px; /* Reduce gap for mobile */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .auth-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Center the buttons */
+  }
+
 
   .auth-links{
     flex-direction: column;
-    
+    gap: 10px;
+
 
   }
 
