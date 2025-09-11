@@ -220,9 +220,9 @@ body {
     justify-content: center;
   }
   .auth-links {
-    flex-direction: row;
-    gap: 2px;
-    align-items: center; /* Center the buttons */
+    flex-direction: column;  /* Stack buttons vertically */
+    gap: 10px;              /* Space between buttons */
+    align-items: center;    /* Center the buttons */
   }
 
 
