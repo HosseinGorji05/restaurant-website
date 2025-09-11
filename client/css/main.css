@@ -226,12 +226,7 @@ body {
   }
 
 
-  .auth-links{
-    flex-direction: column;
-    gap: 10px;
-
-
-  }
+ 
 
   .hero {
     width: 300px;
