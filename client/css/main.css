@@ -208,21 +208,29 @@ body {
 }
 /* Media Queries */
 @media (max-width: 768px) {
-  .navbar {
+ .navbar {
     flex-direction: column;
     padding: 15px 20px;
-    gap: 15px;
+    gap: 20px;
+    align-items: center;
   }
 
   .nav-links {
-    gap: 15px; /* Reduce gap for mobile */
+    gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    order: 2; /* Put nav links after auth buttons */
   }
+
   .auth-links {
-    flex-direction: column;  /* Stack buttons vertically */
-    gap: 10px;              /* Space between buttons */
-    align-items: center;    /* Center the buttons */
+    flex-direction: row; /* Keep side by side on mobile */
+    gap: 10px;
+    order: 1; /* Put auth buttons first */
+  }
+
+  .auth-link {
+    padding: 10px 15px;
+    font-size: 14px;
   }
 
 
