@@ -175,7 +175,7 @@ html, body {
     flex-direction: column;
     padding: 15px 20px;
     gap: 20px;
-    align-items:center;
+    align-items:normal;
   }
 
   .nav-links {

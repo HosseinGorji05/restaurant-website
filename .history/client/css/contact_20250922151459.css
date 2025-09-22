@@ -33,7 +33,7 @@ body.fade-out {
    box-sizing: border-box;
    background-color: black;
 }
-.nav-links{
+.navbar-links{
     list-style: none ;
     display: flex;
     gap: 30px;
@@ -41,7 +41,7 @@ body.fade-out {
     margin: 0;
 }
 
-.nav-links li a {
+.navbar-links li a {
     text-decoration: none;
     color: white;
     font-weight: 600;
@@ -49,7 +49,7 @@ body.fade-out {
     transition: color var(--transition-speed) ease;
 }
 
-.nav-links li a:hover{
+.navbar-links li a:hover{
     color: orange;
 }
 
@@ -251,13 +251,13 @@ body.fade-out {
     gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
-    order: 2; /* Put nav links after auth buttons */
+    order: 1; /* Put nav links after auth buttons */
   }
 
   .auth-links {
     flex-direction: row; /* Keep side by side on mobile */
     gap: 10px;
-    order: 1; /* Put auth buttons first */
+    order: 2; /* Put auth buttons first */
   }
 
   .auth-link {

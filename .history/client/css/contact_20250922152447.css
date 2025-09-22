@@ -49,7 +49,7 @@ body.fade-out {
     transition: color var(--transition-speed) ease;
 }
 
-.nav-links li a:hover{
+.navbar-links li a:hover{
     color: orange;
 }
 
