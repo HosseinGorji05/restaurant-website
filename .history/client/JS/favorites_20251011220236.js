@@ -20,31 +20,14 @@
         
       } else {
           console.log("❌ User is NOT logged in");
-          showNotification("Please log in to see favorites", "error");
+          showNotification("Please log in to see favorites.", "error");
       }
   })
 
   function welcomeMessage(userName){
     console.log("Hello " , userName);
     const notification = document.createElement('div');
-    notification.textContent = `Hello ${userName}`;
-
-     notification.style.cssText = `
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      padding: 15px 20px;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      animation: slideIn 0.3s ease;
-      background-color: #1aa335ff;
-    `;
-
-    document.body.appendChild(notification);
-
+    notification.textContent = 'Hello ${userName}`';
 
      setTimeout(() => {
       notification.remove();

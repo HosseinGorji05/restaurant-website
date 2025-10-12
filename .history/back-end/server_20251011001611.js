@@ -10,7 +10,6 @@ app.use(cors());
 app.use(express.static('.'));
 app.use(express.json());
 
-// Basic database connection test
 app.get('/test-db', (req, res) => {
     db.all("SELECT name FROM sqlite_master WHERE type='table'", (err, tables) => {
       if (err) {
@@ -21,9 +20,7 @@ app.get('/test-db', (req, res) => {
     });
 });
 
-// TODO: Remove debug endpoints before production deployment
-/*
-// DEBUG ENDPOINTS - REMOVE IN PRODUCTION
+
 app.get('/debug-users', (req, res) => {
     db.all('SELECT id, email, password, created_at FROM users', (err, users) => {
       if (err) {
@@ -86,13 +83,12 @@ app.get('/api/users', (req, res) => {
       res.json({ users });
     });
 });
-*/
+
 
 app.listen(PORT , () => {
     console.log(`Server is running on  http://localhost:${PORT}`);
 });
 
-// Enhanced User registration endpoint with detailed logging
 app.post('/api/register', async (req, res) => {
   console.log('=== REGISTRATION REQUEST START ===');
   console.log('Request body received:', req.body);
@@ -106,7 +102,6 @@ app.post('/api/register', async (req, res) => {
       passwordType: typeof password
   });
   
-  // Simple validation
   if (!email || !password) {
       console.log('❌ Validation failed: missing email or password');
       return res.status(400).json({ error: 'Email and password required' });
@@ -117,7 +112,6 @@ app.post('/api/register', async (req, res) => {
       return res.status(400).json({ error: 'Password must be at least 6 characters' });
   }
   
-  // SERVER-SIDE DEDUPLICATION CHECK
   const registrationKey = `${email}-${password}`;
   if (pendingRegistrations.has(registrationKey)) {
       console.log('🚫 Duplicate registration request detected, blocking...');
@@ -127,17 +121,14 @@ app.post('/api/register', async (req, res) => {
       });
   }
   
-  // Mark this registration as in progress
   pendingRegistrations.set(registrationKey, true);
   console.log('✅ Validation passed, proceeding with registration...');
   
   try {
-      // Hash the password first
       console.log('🔐 Hashing password...');
       const hashedPassword = await bcrypt.hash(password, 10);
       console.log('✅ Password hashed successfully');
       
-      // Try to insert directly - let database handle uniqueness
       console.log('💾 Inserting user into database...');
       console.log('Insert parameters:', { email, hashedPasswordLength: hashedPassword.length });
       
@@ -150,13 +141,11 @@ app.post('/api/register', async (req, res) => {
                   changes: this?.changes 
               });
               
-              // ALWAYS remove from pending map when done
               pendingRegistrations.delete(registrationKey);
               
               if (insertErr) {
                   console.log('❌ Database insert error:', insertErr.message);
                   
-                  // Handle UNIQUE constraint violation
                   if (insertErr.code === 'SQLITE_CONSTRAINT' && insertErr.message.includes('UNIQUE constraint failed')) {
                       console.log('⚠️ Email already registered (caught by database constraint)');
                       return res.status(409).json({ 
@@ -165,7 +154,6 @@ app.post('/api/register', async (req, res) => {
                       });
                   }
                   
-                  // Handle other database errors
                   console.log('❌ Unexpected database error:', insertErr.message);
                   return res.status(500).json({ 
                       error: 'REGISTRATION_FAILED',
@@ -173,7 +161,6 @@ app.post('/api/register', async (req, res) => {
                   });
               }
               
-              // Success!
               console.log('✅ User created successfully with ID:', this.lastID);
               console.log('=== REGISTRATION REQUEST SUCCESS ===');
               res.status(201).json({ 
@@ -185,7 +172,6 @@ app.post('/api/register', async (req, res) => {
       );
       
   } catch (hashError) {
-      // ALWAYS remove from pending map on error
       pendingRegistrations.delete(registrationKey);
       console.log('❌ Password hashing error:', hashError);
       console.log('=== REGISTRATION REQUEST FAILED ===');
@@ -196,7 +182,6 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// User login endpoint
 app.post('/api/login', async (req, res) => {
     console.log('=== LOGIN REQUEST START ===');
     console.log('Login attempt for:', req.body.email);
@@ -208,7 +193,6 @@ app.post('/api/login', async (req, res) => {
       return res.status(400).json({ error: 'Email and password required' });
     }
     
-    // Find user in database
     db.get('SELECT * FROM users WHERE email = ?', [email], async (err, user) => {
       console.log('User lookup result:', { 
           error: err?.message, 
@@ -227,7 +211,6 @@ app.post('/api/login', async (req, res) => {
       }
       
       try {
-        // Compare password with hashed version
         console.log('🔐 Comparing passwords...');
         const isValidPassword = await bcrypt.compare(password, user.password);
         
@@ -236,7 +219,6 @@ app.post('/api/login', async (req, res) => {
           return res.status(400).json({ error: 'Invalid email or password' });
         }
         
-        // Login successful
         console.log('✅ Login successful for user:', user.id);
         console.log('=== LOGIN REQUEST SUCCESS ===');
         res.json({ 
@@ -253,12 +235,10 @@ app.post('/api/login', async (req, res) => {
     });
 });
 
-// Favorites endpoints
 app.post("/favorites/add", (req, res) => {
   const userId = req.body.userId;
   const itemId = req.body.itemId;
 
-  // First check if this item is already favorited by this user
   db.get(
     "SELECT id FROM user_favorites WHERE user_id = ? AND menu_item_id = ?",
     [userId, itemId],
@@ -268,7 +248,6 @@ app.post("/favorites/add", (req, res) => {
       }
 
       if (existingFavorite) {
-        // Item is already favorited
         return res.status(409).json({ 
           success: false, 
           error: "Item already in favorites",
@@ -276,7 +255,6 @@ app.post("/favorites/add", (req, res) => {
         });
       }
 
-      // Item not favorited yet, so add it
       db.run(
         "INSERT INTO user_favorites (user_id, menu_item_id) VALUES (?, ?)",
         [userId, itemId], 
@@ -291,6 +269,8 @@ app.post("/favorites/add", (req, res) => {
   );
 });
 
+
+
 app.get("/favorites/user/:userId", (req, res) => {
   const userId = req.params.userId;
   db.all(
@@ -301,6 +281,15 @@ app.get("/favorites/user/:userId", (req, res) => {
         console.log('❌ Error fetching favorites:', err.message);
         return res.status(500).json({error: "Failed to fetch favorites"});
       }
+
+
+      const enrichedFavorites = favorites.map(favorite => {
+        const menuItem = menuItems[favorite.menu_item_id];
+        return {
+          ...favorite,
+          ...menuItem
+        }
+      })
 
       console.log(`✅ Found ${favorites.length} favorites for user ${userId}`);
       res.json({ 
@@ -323,7 +312,6 @@ app.delete("/favorites/:favoriteId", (req, res) => {
         return res.status(500).json({error: "Failed to delete favorite" })
       }
       if (this.changes === 0) {
-        // No rows were deleted (favorite didn't exist)
         return res.status(404).json({ error: "Favorite not found" });
       }
 
@@ -337,7 +325,6 @@ app.delete("/favorites/:favoriteId", (req, res) => {
   );
 });
 
-// Menu items data
 const menuItems = {
   110: { 
     name: "Margherita", 

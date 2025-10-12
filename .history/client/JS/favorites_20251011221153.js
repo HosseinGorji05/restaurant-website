@@ -20,7 +20,7 @@
         
       } else {
           console.log("❌ User is NOT logged in");
-          showNotification("Please log in to see favorites", "error");
+          showNotification("Please log in to see favorites.", "error");
       }
   })
 

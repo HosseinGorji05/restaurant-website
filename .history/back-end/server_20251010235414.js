@@ -269,26 +269,6 @@ app.post("/favorites/add", (req, res) => {
   );
 });
 
-app.get("/favorites/status/:userId/:itemId" , (req, res) => {
-  const {userId , itemId} = req.params;
-  db.get(
-    "SELECT * FROM user_favorites WHERE user_id = ? AND menu_item_id = ?" , 
-    [userId , itemId], 
-    function(err , favorite){
-      if(err){
-         return res.status(500).json({error: "Database error"});
-      }
-      res.json({
-        isfavorited: !!favorite,
-        favoriteId: favorite?.id
-      })
-    }
-  )
-
-});
-
-
-
 app.get("/favorites/user/:userId", (req, res) => {
   const userId = req.params.userId;
   db.all(
@@ -303,17 +283,15 @@ app.get("/favorites/user/:userId", (req, res) => {
 
       const enrichedFavorites = favorites.map(favorite => {
         const menuItem = menuItems[favorite.menu_item_id];
-        return {
-          ...favorite,
-          ...menuItem
-        }
+        ...favorite,
+        ...menuItem
       })
 
       console.log(`✅ Found ${favorites.length} favorites for user ${userId}`);
       res.json({ 
         success: true, 
-        favorites: enrichedFavorites,
-        count: enrichedFavorites.length
+        favorites: favorites,
+        count: favorites.length
       });
     }
   );

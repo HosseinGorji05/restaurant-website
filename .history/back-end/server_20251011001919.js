@@ -276,7 +276,7 @@ app.get("/favorites/status/:userId/:itemId" , (req, res) => {
     [userId , itemId], 
     function(err , favorite){
       if(err){
-         return res.status(500).json({error: "Database error"});
+        return res.status(500).json({error: "Database error"});
       }
       res.json({
         isfavorited: !!favorite,
@@ -312,8 +312,8 @@ app.get("/favorites/user/:userId", (req, res) => {
       console.log(`✅ Found ${favorites.length} favorites for user ${userId}`);
       res.json({ 
         success: true, 
-        favorites: enrichedFavorites,
-        count: enrichedFavorites.length
+        favorites: favorites,
+        count: favorites.length
       });
     }
   );

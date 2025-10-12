@@ -312,8 +312,8 @@ app.get("/favorites/user/:userId", (req, res) => {
       console.log(`✅ Found ${favorites.length} favorites for user ${userId}`);
       res.json({ 
         success: true, 
-        favorites: enrichedFavorites,
-        count: enrichedFavorites.length
+        favorites: favorites,
+        count: favorites.length
       });
     }
   );
