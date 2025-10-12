@@ -1,22 +1,17 @@
-
-
-
-
-
-  document.addEventListener('DOMContentLoaded' , function(){
+document.addEventListener('DOMContentLoaded' , function(){
 
       const isLoggedIn = localStorage.getItem('isLoggedIn');
       const userId = localStorage.getItem('userId');
       const userEmail = localStorage.getItem('userEmail');
       
       
-      
 
-      if (isLoggedIn === 'true' && userId ){
+      if (isLoggedIn === 'true' && userId && userEmail){
           console.log("✅ User is logged in with ID:", userId);
           const userName = userEmail.split('@')[0];
           console.log("user name is: " ,  userName);
           welcomeMessage(userName);
+          fetchUserFavorites(userId);
         
       } else {
           console.log("❌ User is NOT logged in");
@@ -92,3 +87,49 @@
       notification.remove();
     }, 3000);
   }
+
+
+
+
+
+
+async function fetchUserFavorites(userId) {
+  try{
+    const response = await fetch(`http://localhost:3000/favorites/user/${userId}`);
+    const data = await response.json();
+    console.log("Favorite data: " ,  data);
+
+    const favoritesContainer = document.getElementById("favoritesList");
+
+
+    if(data.favorites.length === 0){
+      favoritesContainer.innerHTML = '<p> No favorites yet. Add some items from menu!</p>';
+      return
+    }
+
+    favoritesContainer.innerHTML = '';
+
+    data.favorites.forEach(favorite => {
+      console.log("Favortie item: " , favorite);
+      const favoriteElement = document.createElement('div');
+      favoriteElement.className = 'favorite-item';
+      favoriteElement.innerHTML = `
+      <div class = "favorite-card">
+      <img src = "${favorite.image}" alt = "${favorite.name}" class = "favorite-image">
+         <div class = "favorite-info">
+         <h3> ${favorite.name}</h>
+         <p class="favorite-description">${favorite.description}</p>
+         <p class="favorite-price">$${favorite.price}</p>
+         <button class="remove-favorite" data-favorite-id="${favorite.id}">Remove</button>
+         </div>
+     </div>
+
+      `
+      favoritesContainer.appendChild(favoriteElement);
+    });
+
+  } catch(error){
+    console.log("Error fetching favorites:" , error);
+  }
+  
+}
