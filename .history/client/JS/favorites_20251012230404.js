@@ -10,12 +10,7 @@ document.addEventListener('DOMContentLoaded' , function(){
           console.log("✅ User is logged in with ID:", userId);
           const userName = userEmail.split('@')[0];
           console.log("user name is: " ,  userName);
-          
-          if (!sessionStorage.getItem('welcomeShown')) {
-              welcomeMessage(userName);
-              sessionStorage.setItem('welcomeShown', 'true');
-          }
-          
+          welcomeMessage(userName);
           fetchUserFavorites(userId);
         
       } else {
@@ -57,6 +52,7 @@ document.addEventListener('DOMContentLoaded' , function(){
 
 
   function showNotification(message, type = 'info') {
+    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
@@ -76,6 +72,7 @@ document.addEventListener('DOMContentLoaded' , function(){
         'background-color: #3498db;'}
     `;
 
+    // Add CSS animation
     const style = document.createElement('style');
     style.textContent = `
       @keyframes slideIn {
@@ -87,6 +84,7 @@ document.addEventListener('DOMContentLoaded' , function(){
     document.body.appendChild(notification);
 
 
+    // Remove notification after 3 seconds
     setTimeout(() => {
       notification.remove();
     }, 3000);
@@ -142,53 +140,52 @@ async function fetchUserFavorites(userId) {
 document.addEventListener('DOMContentLoaded' , () => {
    const userId = localStorage.getItem('userId');
 
-  document.addEventListener('click' , async function(e){
-    if(e.target.classList.contains('remove-favorite')){
+  document.addEventListener('click' , function(e){
+    e.preventDefault();
+     if(!userId){
+        alert('User ID not found');
+        return
+      };
+  } )
+
+  const remvBut = document.querySelectorAll('remove-favorite');
+  remvBut.forEach(button => {
+
+    button.addEventListener('click' , async function(e) {
       e.preventDefault();
-         if(!userId){
-       alert('User ID not found');
-       return
-     };
+      try{
+        const response = await fetch(`http://localhost:3000/favorites/${favoriteId}` , {
+          method: 'DELETE' , 
+          headers: {
+            'Content-Type' : 'application/json' , 
+
+          },
+          body:  JSON.stringify({userId: userId , favoriteId: this.getAttribute('data-item-id')})
+          
+
+        });
 
 
-           const favoriteId = e.target.getAttribute('data-favorite-id');
-
-           try{
-             const response = await fetch(`http://localhost:3000/favorites/${favoriteId}` , {
-               method: 'DELETE' , 
-               headers: {
-                 'Content-Type' : 'application/json' , 
-     
-               },
-               body:  JSON.stringify({userId: userId , favoriteId: favoriteId })
-               
-     
-             });
-     
-             if(response.ok){
-               const data = await response.json();
-               showNotification('Item removed' , 'success');
-               console.log("item removed");
-               e.target.closest('.favorite-item')?.remove();
-             } else {
-               showNotification(data.error || 'Failed to remove the item' , 'error')
-               console.log('Response status:', response.status);
-             }
-     
-     
-           }
-     
-          catch(error){
-           console.log('Error' , error);
-           showNotification("Error removing favorite" , 'error');
-          }
-     
+        if(response.ok){
+          const data = await response.json();
+          showNotification('Item removed' , 'success');
+          console.log("item removed");
+          this.closest('.favorite-item')?.remove();
+        } else {
+          showNotification('Failed to remove the item' , 'error')
+          console.log('Response status:', response.status);
         }
-         } )
-       })
-      
 
-      
 
-    
+      }
 
+     catch(error){
+      console.log('Error' , error);
+      showNotification("Error removing favorite" , 'error');
+     }
+
+
+    })
+  } )
+
+})

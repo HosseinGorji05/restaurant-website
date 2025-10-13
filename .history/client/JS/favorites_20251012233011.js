@@ -10,12 +10,7 @@ document.addEventListener('DOMContentLoaded' , function(){
           console.log("✅ User is logged in with ID:", userId);
           const userName = userEmail.split('@')[0];
           console.log("user name is: " ,  userName);
-          
-          if (!sessionStorage.getItem('welcomeShown')) {
-              welcomeMessage(userName);
-              sessionStorage.setItem('welcomeShown', 'true');
-          }
-          
+          welcomeMessage(userName);
           fetchUserFavorites(userId);
         
       } else {
@@ -57,6 +52,7 @@ document.addEventListener('DOMContentLoaded' , function(){
 
 
   function showNotification(message, type = 'info') {
+    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
@@ -76,6 +72,7 @@ document.addEventListener('DOMContentLoaded' , function(){
         'background-color: #3498db;'}
     `;
 
+    // Add CSS animation
     const style = document.createElement('style');
     style.textContent = `
       @keyframes slideIn {
@@ -87,6 +84,7 @@ document.addEventListener('DOMContentLoaded' , function(){
     document.body.appendChild(notification);
 
 
+    // Remove notification after 3 seconds
     setTimeout(() => {
       notification.remove();
     }, 3000);
@@ -151,8 +149,7 @@ document.addEventListener('DOMContentLoaded' , () => {
      };
 
 
-           const favoriteId = e.target.getAttribute('data-favorite-id');
-
+           const favoriteId = this.getAttribute('data-favorite-id');
            try{
              const response = await fetch(`http://localhost:3000/favorites/${favoriteId}` , {
                method: 'DELETE' , 
@@ -169,7 +166,7 @@ document.addEventListener('DOMContentLoaded' , () => {
                const data = await response.json();
                showNotification('Item removed' , 'success');
                console.log("item removed");
-               e.target.closest('.favorite-item')?.remove();
+               this.closest('.favorite-item')?.remove();
              } else {
                showNotification(data.error || 'Failed to remove the item' , 'error')
                console.log('Response status:', response.status);
