@@ -50,7 +50,7 @@ body.fade-in {
   align-items: center;
   padding: 20px 40px;
   color: var(--text-color);
-  position: relative;
+  position: fixed;
   width: 100%;
   top: 0;
   z-index: 1;
