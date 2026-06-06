@@ -123,7 +123,7 @@ async function fetchUserFavorites(userId) {
          <div class = "favorite-info">
          <h3> ${t(favorite.name)}</h>
          <p class="favorite-description">${t(favorite.description)}</p>
-         <p class="favorite-price">$${favorite.price}</p>
+         <p class="favorite-price">${typeof formatMenuPrice === 'function' ? formatMenuPrice(favorite.price) : favorite.price}</p>
          <button class="remove-favorite" data-favorite-id="${favorite.id}">${t('Remove')}</button>
          </div>
      </div>

@@ -344,184 +344,175 @@ app.delete("/favorites/:favoriteId", (req, res) => {
 });
 
 const menuItems = {
-  110: { 
-    name: "Margherita", 
-    price: 20.30, 
-    image: "images/margheritapizza.jpg", 
+  110: {
+    name: "Margherita",
+    price: 600000,
+    image: "images/margheritapizza.jpg",
     description: "Fresh basil, Mozzarella, Tomato sauce",
-    singlePrice: 20.30,
-    doublePrice: 30.00
+    sizes: { single: 500000, twoPersons: 600000, family: 900000 }
   },
-  111: { 
-    name: "Pepperoni", 
-    price: 25.00, 
-    image: "images/istockphoto-1442417585-612x612.jpg", 
+  111: {
+    name: "Pepperoni",
+    price: 550000,
+    image: "images/istockphoto-1442417585-612x612.jpg",
     description: "Spicy, Hot",
-    singlePrice: 25.00,
-    doublePrice: 35.00
+    sizes: { medium: 550000, twoPersons: 700000, family: 950000 }
   },
-  112: { 
-    name: "Veggie Pizza", 
-    price: 30.00, 
-    image: "images/1712661.jpg", 
+  112: {
+    name: "Veggie Pizza",
+    price: 420000,
+    image: "images/1712661.jpg",
     description: "Vegetarian, Fresh vegetables, Cheesy",
-    singlePrice: 30.00,
-    doublePrice: 40.00
+    sizes: { medium: 420000, twoPersons: 550000, family: 800000 }
   },
-  113: { 
-    name: "Chicken and Mushroom Pizza", 
-    price: 22.00, 
-    image: "images/dcd061ae-d693-4dc5-a117-aabb6c48a952.jpeg", 
+  113: {
+    name: "Chicken and Mushroom Pizza",
+    price: 580000,
+    image: "images/dcd061ae-d693-4dc5-a117-aabb6c48a952.jpeg",
     description: "Grilled chicken, Fresh mushrooms, Cheesy",
-    singlePrice: 22.00,
-    doublePrice: 32.00
+    sizes: { single: 400000, medium: 580000, twoPersons: 740000, family: 1100000 }
   },
-  114: { 
-    name: "Roast Beef Pizza", 
-    price: 20.00, 
-    image: "images/61f67055e1c10.jpg", 
+  114: {
+    name: "Roast Beef Pizza",
+    price: 400000,
+    image: "images/61f67055e1c10.jpg",
     description: "Roast beef, Bell pepper, Mozzarella",
-    singlePrice: 20.00,
-    doublePrice: 30.00
+    sizes: { single: 500000, medium: 400000, family: 1300000 }
   },
-  115: { 
-    name: "Kolbe Special Pizza", 
-    price: 12.00, 
-    image: "images/pizzzza.jpg", 
+  115: {
+    name: "Kolbe Special Pizza",
+    price: 550000,
+    image: "images/pizzzza.jpg",
     description: "Cold cuts, Sausage, Olives",
-    singlePrice: 12.00,
-    doublePrice: 22.00
+    sizes: { single: 400000, medium: 550000, twoPersons: 720000, family: 1000000 }
   },
-  116: { 
-    name: "Meat and Mushroom Pizza", 
-    price: 18.00, 
-    image: "images/meat-and-mushroom.jpg", 
+  116: {
+    name: "Meat and Mushroom Pizza",
+    price: 380000,
+    image: "images/meat-and-mushroom.jpg",
     description: "Ground beef, Fresh mushrooms, Special sauce",
-    singlePrice: 18.00,
-    doublePrice: 28.00
+    sizes: { single: 455000, medium: 380000, twoPersons: 800000, family: 1200000 }
   },
-  117: { 
-    name: "Chorizo Pizza", 
-    price: 18.00, 
-    image: "images/AH5_5643-scaled.jpg", 
+  117: {
+    name: "Chorizo Pizza",
+    price: 550000,
+    image: "images/AH5_5643-scaled.jpg",
     description: "Chorizo sausage, Red hot pepper, Stretchy cheese",
-    singlePrice: 18.00,
-    doublePrice: 28.00
+    sizes: { medium: 550000, twoPersons: 700000, family: 1050000 }
   },
-  118: { 
-    name: "Mixed Pizza", 
-    price: 18.00, 
-    image: "images/puzzzza.png", 
+  118: {
+    name: "Mixed Pizza",
+    price: 530000,
+    image: "images/puzzzza.png",
     description: "Beef and chicken ham, Black olives, Pizza cheese",
-    singlePrice: 18.00,
-    doublePrice: 28.00
+    sizes: { single: 370000, medium: 530000, twoPersons: 700000, family: 950000 }
   },
-  119: { 
-    name: "Regular Burger", 
-    price: 18.00, 
-    image: "images/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg", 
+  119: {
+    name: "Regular Burger",
+    price: 250000,
+    image: "images/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg",
     description: "Grilled beef"
   },
-  120: { 
-    name: "Cheeseburger", 
-    price: 20.00, 
-    image: "images/cheezburger.jpg", 
+  120: {
+    name: "Cheeseburger",
+    price: 270000,
+    image: "images/cheezburger.jpg",
     description: "Melted cheese, Fresh beef"
   },
-  121: { 
-    name: "Kolbe Special Burger", 
-    price: 22.00, 
-    image: "images/1199662_180-1024x684.jpg", 
+  121: {
+    name: "Kolbe Special Burger",
+    price: 600000,
+    image: "images/1199662_180-1024x684.jpg",
     description: "Special sauce, Premium ingredients, House specialty"
   },
-  122: { 
-    name: "Mushroom and Cheese Burger", 
-    price: 22.00, 
-    image: "images/mushroom_and_cheese_hamburger_w_hese_tazegi.jpg", 
+  122: {
+    name: "Double Special Burger",
+    price: 900000,
+    image: "images/mushroom_and_cheese_hamburger_w_hese_tazegi.jpg",
     description: "Fresh mushrooms, Mozzarella, Garlic sauce"
   },
-  123: { 
-    name: "Chorizo Burger", 
-    price: 22.00, 
-    image: "images/2_1699867666_7976.jpg", 
+  123: {
+    name: "Chorizo Burger",
+    price: 650000,
+    image: "images/2_1699867666_7976.jpg",
     description: "Chorizo sausage, Spicy, Smoky chili sauce"
   },
-  124: { 
-    name: "Hot Dog", 
-    price: 8.00, 
-    image: "images/هات-داگ.jpg", 
+  124: {
+    name: "Hot Dog",
+    price: 240000,
+    image: "images/هات-داگ.jpg",
     description: "Classic hot dog, Mustard & ketchup, Fresh bun"
   },
-  125: { 
-    name: "Mushroom and Cheese Hot Dog", 
-    price: 10.00, 
-    image: "images/طرز-تهیه-هات-داگ-خانگی.jpg", 
+  125: {
+    name: "Mushroom and Cheese Hot Dog",
+    price: 350000,
+    image: "images/طرز-تهیه-هات-داگ-خانگی.jpg",
     description: "Mushrooms and cheese, Gourmet style"
   },
-  126: { 
-    name: "Krakow", 
-    price: 12.00, 
-    image: "images/pooooza.png", 
+  126: {
+    name: "Krakow",
+    price: 400000,
+    image: "images/img_9618.jpg",
     description: "Krakow sausage, Traditional recipe"
   },
-  127: { 
-    name: "Cocktail", 
-    price: 8.00, 
-    image: "images/132638092866500.jpg", 
+  127: {
+    name: "Cocktail",
+    price: 240000,
+    image: "images/132638092866500.jpg",
     description: "Cocktail sausage, Perfect appetizer"
   },
-  128: { 
-    name: "Beef Ham", 
-    price: 15.00, 
-    image: "images/ساندویچ-ژامبون-گوشت.jpg", 
+  128: {
+    name: "Beef Ham",
+    price: 250000,
+    image: "images/ساندویچ-ژامبون-گوشت.jpg",
     description: "Beef ham, Cheese, Lettuce and mayonnaise"
   },
-  129: { 
-    name: "Chicken Ham", 
-    price: 14.00, 
-    image: "images/0026188_-_550.jpeg", 
+  129: {
+    name: "Chicken Ham",
+    price: 250000,
+    image: "images/0026188_-_550.jpeg",
     description: "Chicken ham, White sauce, Fresh vegetables"
   },
-  130: { 
-    name: "Roasted Ham", 
-    price: 16.00, 
-    image: "images/janbon-tanori.jpg", 
+  130: {
+    name: "Roasted Ham",
+    price: 350000,
+    image: "images/janbon-tanori.jpg",
     description: "Roasted ham, Mozzarella, Grilled to perfection"
   },
-  131: { 
-    name: "Kolbe Special Fries", 
-    price: 8.00, 
-    image: "images/sibzamini-paniri.jpg", 
+  131: {
+    name: "Kolbe Special Fries",
+    price: 300000,
+    image: "images/sibzamini-paniri.jpg",
     description: "House special seasoning, Crispy texture, Perfect side dish"
   },
-  132: { 
-    name: "Baked Potato", 
-    price: 6.00, 
-    image: "images/img_682617.jpeg", 
+  132: {
+    name: "Baked Potato",
+    price: 230000,
+    image: "images/img_682617.jpeg",
     description: "Fresh baked, Butter and herbs, Healthy option"
   },
-  133: { 
-    name: "French Fries", 
-    price: 5.00, 
-    image: "images/سیب-زمینی-سرخ-کرده.webp", 
+  133: {
+    name: "French Fries",
+    price: 150000,
+    image: "images/سیب-زمینی-سرخ-کرده.webp",
     description: "Great with burgers, Golden crispy, Classic side"
   },
-  134: { 
-    name: "Garlic Bread", 
-    price: 4.00, 
-    image: "images/calindairy-blog-garlic-bread-030920-002.webp", 
+  134: {
+    name: "Garlic Bread",
+    price: 250000,
+    image: "images/calindairy-blog-garlic-bread-030920-002.webp",
     description: "Fresh baked, Garlic butter, Perfect starter"
   },
-  135: { 
-    name: "Caesar Salad", 
-    price: 12.00, 
-    image: "images/Caesar-salad-1.jpg", 
+  135: {
+    name: "Caesar Salad",
+    price: null,
+    image: "images/Caesar-salad-1.jpg",
     description: "Grilled or fried chicken, Fresh romaine, Caesar dressing"
   },
-  136: { 
-    name: "Garden Salad", 
-    price: 10.00, 
-    image: "images/salad-fasl-min.jpg", 
+  136: {
+    name: "Garden Salad",
+    price: null,
+    image: "images/salad-fasl-min.jpg",
     description: "Seasonal vegetables mix (lettuce, cucumber, tomato, carrot), Light diet friendly, Fresh and healthy"
   }
 };

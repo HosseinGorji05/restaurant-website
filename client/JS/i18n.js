@@ -72,6 +72,12 @@
     // Menu page
     "My Favorites": "علاقه‌مندی‌های من",
     "Choose:": "انتخاب کنید:",
+    "One Person": "یک نفره",
+    "Medium": "متوسط",
+    "Two Persons": "دو نفره",
+    "Family": "خانواده",
+    "Standard": "استاندارد",
+    "Price on request": "تماس بگیرید",
     "Single": "تک",
     "Double": "دوبل",
     "Add to Favorites": "افزودن به علاقه‌مندی‌ها",
@@ -85,13 +91,14 @@
     "Veggie Pizza": "پیتزا سبزیجات",
     "Chicken and Mushroom Pizza": "پیتزا مرغ و قارچ",
     "Roast Beef Pizza": "پیتزا گوشت",
-    "Kolbe Special Pizza": "پیتزا مخصوص کلبه",
+    "Kolbe Special Pizza": "پیتزا ویژه کلبه (مخصوص)",
     "Meat and Mushroom Pizza": "پیتزا گوشت و قارچ",
     "Chorizo Pizza": "پیتزا چوریزو",
     "Mixed Pizza": "پیتزا مخلوط",
-    "Regular Burger": "برگر ساده",
+    "Regular Burger": "برگر معمولی",
     "Cheeseburger": "چیزبرگر",
-    "Kolbe Special Burger": "برگر مخصوص کلبه",
+    "Kolbe Special Burger": "برگر ویژه کلبه",
+    "Double Special Burger": "دبل برگر ویژه",
     "Mushroom and Cheese Burger": "برگر قارچ و پنیر",
     "Chorizo Burger": "برگر چوریزو",
     "Hot Dog": "هات داگ",
@@ -100,8 +107,8 @@
     "Cocktail": "کوکتل",
     "Beef Ham": "ژامبون گوشت",
     "Chicken Ham": "ژامبون مرغ",
-    "Roasted Ham": "ژامبون سرخ‌شده",
-    "Kolbe Special Fries": "سیب‌زمینی مخصوص کلبه",
+    "Roasted Ham": "ژامبون تنوری",
+    "Kolbe Special Fries": "سیب‌زمینی ویژه کلبه",
     "Baked Potato": "سیب‌زمینی تنوری",
     "French Fries": "سیب‌زمینی سرخ‌کرده",
     "Garlic Bread": "نان سیر",
@@ -313,6 +320,7 @@
       body.rtl { font-family: "Vazirmatn", Tahoma, sans-serif; }
       [dir="rtl"] .nav-links { padding-right: 0; }
       [dir="rtl"] .tags { direction: rtl; }
+      [dir="rtl"] .menu-item .choice { direction: rtl; }
       [dir="rtl"] .feature-card,
       [dir="rtl"] .about-card,
       [dir="rtl"] .contact-card,
@@ -418,6 +426,10 @@
     document.documentElement.lang = lang === "fa" ? "fa" : "en";
     document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
     document.body.classList.toggle("rtl", lang === "fa");
+
+    if (typeof window.initMenuPrices === "function") {
+      window.initMenuPrices();
+    }
   }
 
   injectAssets();

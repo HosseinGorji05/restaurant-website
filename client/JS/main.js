@@ -59,26 +59,50 @@ function initNavbarScroll() {
   }, { passive: true });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+window.formatMenuPrice = function (amount) {
+  if (!amount && amount !== 0) return typeof t === 'function' ? t('Price on request') : 'Price on request';
+  const lang = localStorage.getItem('siteLang') === 'fa' ? 'fa-IR' : 'en-US';
+  const formatted = Number(amount).toLocaleString(lang);
+  const suffix = lang === 'fa-IR' ? ' تومان' : ' Toman';
+  return formatted + suffix;
+};
+
+function getDatasetPrice(select, key) {
+  const value = select.dataset[key];
+  const price = parseInt(value, 10);
+  return Number.isFinite(price) ? price : 0;
+}
+
+function getChoicePrice(select) {
+  const key = select.value;
+  if (key === 'single') return getDatasetPrice(select, 'single');
+  if (key === 'medium') return getDatasetPrice(select, 'medium');
+  if (key === 'twoPersons') return getDatasetPrice(select, 'twoPersons');
+  if (key === 'family') return getDatasetPrice(select, 'family');
+  return 0;
+}
+
+function initMenuPrices() {
   document.querySelectorAll('.menu-item').forEach(item => {
     const select = item.querySelector('.choice');
     const priceDisplay = item.querySelector('.price');
     if (!select || !priceDisplay) return;
 
     function updatePrice() {
-      let price = 0;
-      if (select.value === "single") {
-        price = parseFloat(select.dataset.single);
-      } else if (select.value === "double") {
-        price = parseFloat(select.dataset.double);
-      }
-      priceDisplay.innerText = `$${price.toFixed(2)}`;
+      const price = getChoicePrice(select);
+      priceDisplay.textContent = price ? formatMenuPrice(price) : formatMenuPrice(null);
     }
 
-    select.addEventListener('change', updatePrice);
+    if (!select.dataset.priceBound) {
+      select.dataset.priceBound = '1';
+      select.addEventListener('change', updatePrice);
+    }
     updatePrice();
   });
-});
+}
+
+window.initMenuPrices = initMenuPrices;
+document.addEventListener("DOMContentLoaded", initMenuPrices);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', function (e) {
