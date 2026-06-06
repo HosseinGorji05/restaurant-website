@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const db = require('./database')
 const bcrypt = require('bcrypt');
 const app = express();
@@ -7,7 +8,7 @@ const cors = require('cors');
 const pendingRegistrations = new Map();
 
 app.use(cors());
-app.use(express.static('.'));
+app.use(express.static(path.join(__dirname, '..')));
 app.use(express.json());
 
 app.get('/test-db', (req, res) => {
@@ -318,7 +319,6 @@ app.get("/favorites/user/:userId", (req, res) => {
     }
   );
 });
-//http://localhost:3000/favorites/delete
 app.delete("/favorites/:favoriteId", (req, res) => {
   const favoriteId = req.params.favoriteId;
   db.run(

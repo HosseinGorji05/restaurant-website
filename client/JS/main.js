@@ -25,7 +25,7 @@
         loginButton.href = '#';
         loginButton.addEventListener('click' , function(e){
           e.preventDefault();
-          const shouldLogout = confirm("Do you want to log out?");
+          const shouldLogout = confirm(t("Do you want to log out?"));
           if(shouldLogout){
             localStorage.removeItem('isLoggedIn');
             localStorage.removeItem('userEmail');
@@ -91,18 +91,17 @@
           
           const isLoggedIn = localStorage.getItem('isLoggedIn');
           if(!isLoggedIn || isLoggedIn !== 'true'){
-            showNotification('Please log in to add favorites', 'error');
+            showNotification(t('Please log in to add favorites'), 'error');
             return;
           }
 
           const userId = localStorage.getItem('userId');
           if(!userId){
-            alert('User ID not found');
+            alert(t('User ID not found'));
             return;
           }
 
           const itemId = button.getAttribute('data-item-id') || '1';
-
           try{
             const response = await fetch('http://localhost:3000/favorites/add' , {
               method: 'POST' , 
@@ -117,22 +116,22 @@
             const data = await response.json();
             
             if(response.status === 409) {
-              showNotification(data.message || 'Item already in favorites!', 'info');
-              button.textContent = 'Already Favorited!';
+              showNotification(t('Item already in favorites!'), 'info');
+              button.textContent = t('Already Favorited!');
               button.style.backgroundColor = '#27ae60';
               return;
             }
             
             if(data.success){
-              showNotification('Added to favorites!', 'success');
-              button.textContent = 'Added to Favorites!';
+              showNotification(t('Added to favorites!'), 'success');
+              button.textContent = t('Added to Favorites!');
               button.style.backgroundColor = '#27ae60';
             } else {
-              showNotification(data.error || 'Failed to add to favorites', 'error');
+              showNotification(t('Failed to add to favorites'), 'error');
             }
           } catch (error){
             console.error('Error:', error);
-            showNotification('Error adding to favorites', 'error');
+            showNotification(t('Error adding to favorites'), 'error');
           }
         })
       })

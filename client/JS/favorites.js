@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded' , function(){
         
       } else {
           console.log("❌ User is NOT logged in");
-          showNotification("Please log in to see favorites", "error");
+          showNotification(t("Please log in to see favorites"), "error");
       }
 
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded' , function(){
   function welcomeMessage(userName){
     console.log("Hello " , userName);
     const notification = document.createElement('div');
-    notification.textContent = `Hello ${userName}`;
+    notification.textContent = t('Hello {name}', { name: userName });
 
      notification.style.cssText = `
       position: fixed;
@@ -107,7 +107,7 @@ async function fetchUserFavorites(userId) {
 
 
     if(data.favorites.length === 0){
-      favoritesContainer.innerHTML = '<p> No favorites yet. Add some items from menu!</p>';
+      favoritesContainer.innerHTML = `<p> ${t('No favorites yet. Add some items from menu!')}</p>`;
       return
     }
 
@@ -121,10 +121,10 @@ async function fetchUserFavorites(userId) {
       <div class = "favorite-card">
       <img src = "${favorite.image}" alt = "${favorite.name}" class = "favorite-image">
          <div class = "favorite-info">
-         <h3> ${favorite.name}</h>
-         <p class="favorite-description">${favorite.description}</p>
+         <h3> ${t(favorite.name)}</h>
+         <p class="favorite-description">${t(favorite.description)}</p>
          <p class="favorite-price">$${favorite.price}</p>
-         <button class="remove-favorite" data-favorite-id="${favorite.id}">Remove</button>
+         <button class="remove-favorite" data-favorite-id="${favorite.id}">${t('Remove')}</button>
          </div>
      </div>
 
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded' , () => {
       e.preventDefault();
         
       if(!userId){
-       alert('User ID not found');
+       alert(t('User ID not found'));
        return
      };
 
@@ -167,11 +167,11 @@ document.addEventListener('DOMContentLoaded' , () => {
      
              if(response.ok){
                const data = await response.json();
-               showNotification('Item removed' , 'success');
+               showNotification(t('Item removed') , 'success');
                console.log("item removed");
                e.target.closest('.favorite-item')?.remove();
              } else {
-               showNotification(data.error || 'Failed to remove the item' , 'error')
+               showNotification(t('Failed to remove the item') , 'error')
                console.log('Response status:', response.status);
              }
      
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded' , () => {
      
           catch(error){
            console.log('Error' , error);
-           showNotification("Error removing favorite" , 'error');
+           showNotification(t("Error removing favorite") , 'error');
           }
      
         }

@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // DISABLE SUBMIT BUTTON
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'Logging in...';
+                submitButton.textContent = t('Logging in...');
             }
             
             console.log('Login attempt:', { email, passwordLength: password.length });
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     localStorage.setItem('userEmail', data.email);
                     localStorage.setItem('isLoggedIn', 'true');
 
-                    showMessage(messageDiv, data.message, 'success');
+                    showMessage(messageDiv, t(data.message), 'success');
                     // Redirect to home page after successful login
                     setTimeout(() => {
                         window.location.href = 'index.html';
@@ -104,17 +104,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     localStorage.setItem('userId', data.userId);
                 } else {
                     // Error
-                    showMessage(messageDiv, data.error, 'error');
+                    showMessage(messageDiv, t(data.error), 'error');
                 }
             } catch (error) {
                 console.error('Login error:', error);
-                showMessage(messageDiv, 'Error connecting to server', 'error');
+                showMessage(messageDiv, t('Error connecting to server'), 'error');
             } finally {
                 // ALWAYS RESET THE FORM STATE
                 isLoginSubmitting = false;
                 if (submitButton) {
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Login';
+                    submitButton.textContent = t('Login');
                 }
             }
         });
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // DISABLE SUBMIT BUTTON
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'Signing up...';
+                submitButton.textContent = t('Signing up...');
             }
             
             console.log('Signup attempt:', { email, passwordLength: password.length });
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Handle different response statuses
                 if (response.status === 201) {
                     // SUCCESS - User created successfully
-                    showMessage(messageDiv, 'Account created successfully!', 'success');
+                    showMessage(messageDiv, t('Account created successfully!'), 'success');
                     // Clear form
                     signupFormElement.reset();
                     // Switch to login form after success
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                 } else if (response.status === 409) {
                     // CONFLICT - Email already exists
-                    showMessage(messageDiv, 'This email is already registered. Please login or use a different email.', 'error');
+                    showMessage(messageDiv, t('This email is already registered. Please login or use a different email.'), 'error');
                     
                 } else if (response.status === 400) {
                     // BAD REQUEST - Validation errors
@@ -189,23 +189,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else if (errorMessage === 'Password must be at least 6 characters') {
                         errorMessage = 'Password must be at least 6 characters';
                     }
-                    showMessage(messageDiv, errorMessage, 'error');
+                    showMessage(messageDiv, t(errorMessage), 'error');
                     
                 } else {
                     // OTHER ERRORS (500, etc.)
                     let errorMessage = data.message || data.error || 'Error during registration';
-                    showMessage(messageDiv, errorMessage, 'error');
+                    showMessage(messageDiv, t(errorMessage), 'error');
                 }
                 
             } catch (error) {
                 console.error('Signup error:', error);
-                showMessage(messageDiv, 'Error connecting to server. Please try again.', 'error');
+                showMessage(messageDiv, t('Error connecting to server. Please try again.'), 'error');
             } finally {
                 // ALWAYS RESET THE FORM STATE
                 isSignupSubmitting = false;
                 if (submitButton) {
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Sign Up';
+                    submitButton.textContent = t('Sign Up');
                 }
             }
         });
