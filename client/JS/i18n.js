@@ -20,6 +20,51 @@
     "Kolbeh": "کلبه",
     "Kolbe": "کلبه",
     "View Menu": "مشاهده منو",
+    "Our Story": "داستان ما",
+    "Tehran's Finest": "برترین در تهران",
+    "Fresh Ingredients": "مواد اولیه تازه",
+    "Only the finest, locally sourced ingredients in every dish we serve.":
+      "بهترین مواد اولیه محلی در هر غذایی که سرو می‌کنیم.",
+    "Authentic Recipes": "دستورهای اصیل",
+    "Traditional flavors blended with modern techniques for a unique taste.":
+      "طعم‌های سنتی با تکنیک‌های مدرن برای تجربه‌ای منحصربه‌فرد.",
+    "Cozy Atmosphere": "فضای دلنشین",
+    "A warm, welcoming space perfect for family dinners and gatherings.":
+      "فضایی گرم و صمیمی، مناسب برای دورهمی‌های خانوادگی.",
+
+    // Customer reviews
+    "What Our Customers Say": "نظر مشتریان ما",
+    "Real feedback from guests who keep coming back":
+      "بازخوردهای واقعی از مهمانانی که همیشه برمی‌گردند",
+    "The Margherita is incredible. Fresh ingredients and the crust is perfect every single time we visit.":
+      "مارگاریتا فوق‌العاده است. مواد اولیه تازه و خمیر پیتزا هر بار عالی است.",
+    "Best pizza in Tehran! The cozy atmosphere makes it our family's favorite weekend dinner spot.":
+      "بهترین پیتزای تهران! فضای دنج آن، محل مورد علاقه خانواده ما برای شام آخر هفته شده.",
+    "Kolbe Special Pizza is a must-try. Fast service, friendly staff, and flavors you won't forget.":
+      "پیتزا مخصوص کلبه حتماً امتحان کنید. سرویس سریع، پرسنل مهربان و طعمی فراموش‌نشدنی.",
+    "Regular Customer": "مشتری دائمی",
+    "Family Guest": "مهمان خانوادگی",
+    "Local Foodie": "علاقه‌مند به غذا",
+    "Follow us for daily specials and updates":
+      "ما را دنبال کنید تا از پیشنهادهای روزانه باخبر شوید",
+    "© 2026 Kolbeh Restaurant. All rights reserved.":
+      "© ۱۴۰۵ رستوران کلبه. تمامی حقوق محفوظ است.",
+
+    // Page headers
+    "Our Menu": "منوی ما",
+    "Handcrafted pizzas, burgers, and more — made fresh daily":
+      "پیتزا، برگر و بیشتر — تازه و دست‌ساز، هر روز",
+    "Our story, our passion, our pizza":
+      "داستان ما، اشتیاق ما، پیتزای ما",
+    "Get in Touch": "تماس با ما",
+    "We'd love to hear from you — visit us or reach out anytime":
+      "خوشحال می‌شویم از شما بشنویم — هر زمان به ما سر بزنید",
+
+    // About stats
+    "Menu Items": "آیتم منو",
+    "Made Fresh Daily": "تازه هر روز",
+    "Heart of the City": "قلب شهر",
+    "Tehran": "تهران",
 
     // Shared
     "Contact With Us": "با ما در تماس باشید",
@@ -264,24 +309,14 @@
 
     const style = document.createElement("style");
     style.textContent = `
-      .lang-switch {
-        color: white;
-        background: #444;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 8px 14px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 15px;
-        white-space: nowrap;
-        transition: background 0.3s;
-      }
-      .lang-switch:hover { background: #ff6b35; }
       [dir="rtl"] body,
       body.rtl { font-family: "Vazirmatn", Tahoma, sans-serif; }
       [dir="rtl"] .nav-links { padding-right: 0; }
-      [dir="rtl"] .auth-links { margin-left: 0; margin-right: auto; }
       [dir="rtl"] .tags { direction: rtl; }
+      [dir="rtl"] .feature-card,
+      [dir="rtl"] .about-card,
+      [dir="rtl"] .contact-card,
+      [dir="rtl"] .review-card { text-align: right; }
     `;
     document.head.appendChild(style);
   }
@@ -305,12 +340,26 @@
     const lang = getLang();
 
     const textSelectors = [
+      ".nav-brand",
       ".nav-links a",
       ".auth-link",
+      ".hero h1",
       ".hero h2",
+      ".hero-eyebrow",
       ".hero-btn",
+      ".btn",
+      ".feature-card h3",
+      ".feature-card p",
+      ".reviews-header h2",
+      ".reviews-header p",
+      ".review-text",
+      ".review-name",
+      ".review-meta",
+      ".page-header h1",
+      ".page-header p",
       ".contact-box h2",
-      ".contact-box2 h2",
+      ".footer-tagline",
+      ".footer-copy",
       ".menu-item h3",
       ".menu-item .tag",
       ".menu-item label",
@@ -318,8 +367,11 @@
       ".add-to-cart",
       ".favorites-display h2",
       ".favorites-container h1",
-      ".content p",
-      ".contact-info .label",
+      ".about-card p",
+      ".stat-label",
+      ".stat-number",
+      ".contact-card .label",
+      ".contact-link span",
       ".icon-text span",
       ".tab-btn",
       ".auth-form h2",

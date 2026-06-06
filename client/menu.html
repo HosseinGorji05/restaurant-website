@@ -16,6 +16,7 @@
   </head>
   <body class="fade-out">
     <nav class="navbar">
+      <a href="index.html" class="nav-brand">Kolbeh</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
@@ -23,18 +24,15 @@
         <li><a href="about.html">About Us</a></li>
       </ul>
       <div class="auth-links">
-        <li style="list-style: none">
-          <a href="favorites.html" class="auth-link" id="favoritesButton"
-            >Favorites</a
-          >
-        </li>
-        <li style="list-style: none">
-          <a href="signup.html" class="auth-link" id="loginButton"
-            >Login / Sign Up</a
-          >
-        </li>
+        <a href="favorites.html" class="auth-link auth-link--ghost" id="favoritesButton">Favorites</a>
+        <a href="signup.html" class="auth-link" id="loginButton">Login / Sign Up</a>
       </div>
     </nav>
+
+    <header class="page-header">
+      <h1>Our Menu</h1>
+      <p>Handcrafted pizzas, burgers, and more — made fresh daily</p>
+    </header>
 
     <div class="menu-container">
       <!-- Favorites Display Section -->
@@ -646,30 +644,17 @@
       </div>
     </div>
 
-    <div class="contact-box">
+    <footer class="site-footer contact-box">
       <h2>Contact With Us</h2>
+      <p class="footer-tagline">Follow us for daily specials and updates</p>
       <div class="socials">
-        <a
-          href="https://www.linkedin.com/company/kolbe"
-          class="fa fa-linkedin"
-          target="_blank"
-          rel="noopener"
-        ></a>
-        <a
-          href="https://www.instagram.com/pizza.kolbeh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          class="fa fa-instagram"
-          target="_blank"
-          rel="noopener"
-        ></a>
-        <a
-          href="https://www.facebook.com/kolberestaurant"
-          class="fa fa-facebook"
-          target="_blank"
-          rel="noopener"
-        ></a>
-        <a href="mailto:contact@kolbe.com" class="fa fa-envelope"></a>
-        <a href="tel:+830128120321" class="fa fa-phone"></a>
+        <a href="https://www.linkedin.com/company/kolbe" class="fa fa-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"></a>
+        <a href="https://www.instagram.com/pizza.kolbeh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="fa fa-instagram" target="_blank" rel="noopener" aria-label="Instagram"></a>
+        <a href="https://www.facebook.com/kolberestaurant" class="fa fa-facebook" target="_blank" rel="noopener" aria-label="Facebook"></a>
+        <a href="mailto:contact@kolbe.com" class="fa fa-envelope" aria-label="Email"></a>
+        <a href="tel:+830128120321" class="fa fa-phone" aria-label="Phone"></a>
       </div>
-    </div>
+      <p class="footer-copy">&copy; 2026 Kolbeh Restaurant. All rights reserved.</p>
+    </footer>
   </body>
 </html>

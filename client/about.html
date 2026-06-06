@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/about.css" />
     <link
       rel="stylesheet"
@@ -13,61 +15,65 @@
   </head>
   <body class="fade-out">
     <nav class="navbar">
+      <a href="index.html" class="nav-brand">Kolbeh</a>
       <ul class="nav-links">
-        <li><a href="index.html">Home </a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>
       <div class="auth-links">
-        <li style="list-style: none">
-          <a href="favorites.html" class="auth-link" id="favoritesButton"
-            >Favorites</a
-          >
-        </li>
-        <li style="list-style: none">
-          <a href="signup.html" class="auth-link" id="loginButton"
-            >Login / Sign Up</a
-          >
-        </li>
+        <a href="favorites.html" class="auth-link auth-link--ghost" id="favoritesButton">Favorites</a>
+        <a href="signup.html" class="auth-link" id="loginButton">Login / Sign Up</a>
       </div>
     </nav>
-    <div class="image-container"></div>
-    <div class="content">
-      <p>
-        Welcome to Kolbe Pizza; a cozy spot in the heart of Tehran to experience
-        the real taste of pizza. Using fresh, high-quality ingredients, we offer
-        you a menu that blends traditional and modern flavors. Whether you're
-        looking for a classic Margherita or a spicy Pepperoni, our goal is to
-        serve you a warm, delicious, and memorable meal. At Kolbe Pizza, every
-        slice tells a story of passion and taste.
-      </p>
-    </div>
 
-    <div class="contact-box">
-      <h2>Contact With Us</h2>
-      <div class="socials">
-        <a
-          href="https://www.linkedin.com/company/kolbe"
-          class="fa fa-linkedin"
-          target="_blank"
-          rel="noopener"
-        ></a>
-        <a
-          href="https://www.instagram.com/pizza.kolbeh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          class="fa fa-instagram"
-          target="_blank"
-          rel="noopener"
-        ></a>
-        <a
-          href="https://www.facebook.com/kolberestaurant"
-          class="fa fa-facebook"
-          target="_blank"
-          rel="noopener"
-        ></a>
-        <a href="mailto:contact@kolbe.com" class="fa fa-envelope"></a>
-        <a href="tel:+2138018221" class="fa fa-phone"></a>
+    <header class="page-header">
+      <h1>About Us</h1>
+      <p>Our story, our passion, our pizza</p>
+    </header>
+
+    <div class="about-hero"></div>
+
+    <div class="about-content">
+      <div class="about-card">
+        <p>
+          Welcome to Kolbe Pizza; a cozy spot in the heart of Tehran to experience
+          the real taste of pizza. Using fresh, high-quality ingredients, we offer
+          you a menu that blends traditional and modern flavors. Whether you're
+          looking for a classic Margherita or a spicy Pepperoni, our goal is to
+          serve you a warm, delicious, and memorable meal. At Kolbe Pizza, every
+          slice tells a story of passion and taste.
+        </p>
       </div>
     </div>
+
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-number">27+</div>
+        <div class="stat-label">Menu Items</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Made Fresh Daily</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">Tehran</div>
+        <div class="stat-label">Heart of the City</div>
+      </div>
+    </div>
+
+    <footer class="site-footer contact-box">
+      <h2>Contact With Us</h2>
+      <p class="footer-tagline">Follow us for daily specials and updates</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/kolbe" class="fa fa-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"></a>
+        <a href="https://www.instagram.com/pizza.kolbeh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="fa fa-instagram" target="_blank" rel="noopener" aria-label="Instagram"></a>
+        <a href="https://www.facebook.com/kolberestaurant" class="fa fa-facebook" target="_blank" rel="noopener" aria-label="Facebook"></a>
+        <a href="mailto:contact@kolbe.com" class="fa fa-envelope" aria-label="Email"></a>
+        <a href="tel:+2138018221" class="fa fa-phone" aria-label="Phone"></a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Kolbeh Restaurant. All rights reserved.</p>
+    </footer>
   </body>
 </html>

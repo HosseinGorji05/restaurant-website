@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,64 +14,175 @@
   </head>
   <body class="fade-out">
     <nav class="navbar">
+      <a href="index.html" class="nav-brand">Kolbeh</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>
-
       <div class="auth-links">
-        <li style="list-style: none">
-          <a href="favorites.html" class="auth-link" id="favoritesButton"
-            >Favorites</a
-          >
-        </li>
-        <li style="list-style: none">
-          <a href="signup.html" class="auth-link" id="loginButton"
-            >Login / Sign Up</a
-          >
-        </li>
+        <a
+          href="favorites.html"
+          class="auth-link auth-link--ghost"
+          id="favoritesButton"
+          >Favorites</a
+        >
+        <a href="signup.html" class="auth-link" id="loginButton"
+          >Login / Sign Up</a
+        >
       </div>
     </nav>
 
     <main class="page-container">
       <div class="hero-wrapper">
         <section class="hero">
-          <h2>Kolbeh</h2>
+          <span class="hero-eyebrow">Tehran's Finest</span>
+          <h1>Kolbeh</h1>
           <p>
-            Authentic flavors. <br />
-            Warm and cozy space. <br />Unforgettable experience.
+            Authentic flavors.<br />
+            Warm and cozy space.<br />
+            Unforgettable experience.
           </p>
-          <a href="menu.html" class="hero-btn">View Menu</a>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-primary">View Menu</a>
+            <a href="about.html" class="btn btn-outline">Our Story</a>
+          </div>
         </section>
       </div>
 
-      <div class="contact-box">
+      <section class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🍕</div>
+          <h3>Fresh Ingredients</h3>
+          <p>
+            Only the finest, locally sourced ingredients in every dish we serve.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👨‍🍳</div>
+          <h3>Authentic Recipes</h3>
+          <p>
+            Traditional flavors blended with modern techniques for a unique
+            taste.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏠</div>
+          <h3>Cozy Atmosphere</h3>
+          <p>
+            A warm, welcoming space perfect for family dinners and gatherings.
+          </p>
+        </div>
+      </section>
+
+      <section class="reviews">
+        <div class="reviews-header">
+          <h2>What Our Customers Say</h2>
+          <p>Real feedback from guests who keep coming back</p>
+        </div>
+        <div class="reviews-marquee" aria-label="Customer reviews carousel">
+          <div class="reviews-track">
+            <article class="review-card">
+              <div class="review-stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p class="review-text">The Margherita is incredible. Fresh ingredients and the crust is perfect every single time we visit.</p>
+              <div class="review-author">
+                <span class="review-name">Sara M.</span>
+                <span class="review-meta">Regular Customer</span>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="review-stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p class="review-text">Best pizza in Tehran! The cozy atmosphere makes it our family's favorite weekend dinner spot.</p>
+              <div class="review-author">
+                <span class="review-name">Amir H.</span>
+                <span class="review-meta">Family Guest</span>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="review-stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p class="review-text">Kolbe Special Pizza is a must-try. Fast service, friendly staff, and flavors you won't forget.</p>
+              <div class="review-author">
+                <span class="review-name">Neda K.</span>
+                <span class="review-meta">Local Foodie</span>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="review-stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p class="review-text">The Margherita is incredible. Fresh ingredients and the crust is perfect every single time we visit.</p>
+              <div class="review-author">
+                <span class="review-name">Sara M.</span>
+                <span class="review-meta">Regular Customer</span>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="review-stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p class="review-text">Best pizza in Tehran! The cozy atmosphere makes it our family's favorite weekend dinner spot.</p>
+              <div class="review-author">
+                <span class="review-name">Amir H.</span>
+                <span class="review-meta">Family Guest</span>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="review-stars" aria-hidden="true">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p class="review-text">Kolbe Special Pizza is a must-try. Fast service, friendly staff, and flavors you won't forget.</p>
+              <div class="review-author">
+                <span class="review-name">Neda K.</span>
+                <span class="review-meta">Local Foodie</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer contact-box">
         <h2>Contact With Us</h2>
+        <p class="footer-tagline">Follow us for daily specials and updates</p>
         <div class="socials">
           <a
             href="https://www.linkedin.com/company/kolbe"
             class="fa fa-linkedin"
             target="_blank"
             rel="noopener"
+            aria-label="LinkedIn"
           ></a>
           <a
             href="https://www.instagram.com/pizza.kolbeh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             class="fa fa-instagram"
             target="_blank"
             rel="noopener"
+            aria-label="Instagram"
           ></a>
           <a
             href="https://www.facebook.com/kolberestaurant"
             class="fa fa-facebook"
             target="_blank"
             rel="noopener"
+            aria-label="Facebook"
           ></a>
-          <a href="mailto:contact@kolbe.com" class="fa fa-envelope"></a>
-          <a href="tel:+301290312" class="fa fa-phone"></a>
+          <a
+            href="mailto:contact@kolbe.com"
+            class="fa fa-envelope"
+            aria-label="Email"
+          ></a>
+          <a href="tel:+301290312" class="fa fa-phone" aria-label="Phone"></a>
         </div>
-      </div>
+        <p class="footer-copy">
+          &copy; 2026 Kolbeh Restaurant. All rights reserved.
+        </p>
+      </footer>
     </main>
   </body>
 </html>

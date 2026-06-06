@@ -1,180 +1,149 @@
-  document.querySelectorAll('nav.navbar .nav-links a').forEach(link => {    
-    link.addEventListener('click', function (e) {
-      const url = link.getAttribute("href");
-      if (!url.startsWith("#") && !url.startsWith("http")) {
-        e.preventDefault(); 
+document.querySelectorAll('nav.navbar .nav-links a').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const url = link.getAttribute("href");
+    if (!url.startsWith("#") && !url.startsWith("http")) {
+      e.preventDefault();
+      document.body.classList.remove('fade-in');
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = url;
+      }, 400);
+    }
+  });
+});
 
-        document.body.classList.remove('fade-in');
-        document.body.classList.add('fade-out');
+document.addEventListener('DOMContentLoaded', function () {
+  const loginButton = document.getElementById("loginButton");
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const userEmail = localStorage.getItem('userEmail');
 
-        setTimeout(() => {
-          window.location.href = url;
-        }, 500); 
+  if (loginButton && isLoggedIn === 'true' && userEmail) {
+    loginButton.textContent = typeof t === 'function' ? t("Log Out") : "Log Out";
+    loginButton.href = '#';
+    loginButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      const shouldLogout = confirm(t("Do you want to log out?"));
+      if (shouldLogout) {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userId');
+        location.reload();
       }
     });
+  }
+
+  highlightActiveNav();
+  initNavbarScroll();
+});
+
+window.addEventListener('load', () => {
+  document.body.classList.remove('fade-out');
+  document.body.classList.add('fade-in');
+});
+
+function highlightActiveNav() {
+  const current = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === current || (current === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
   });
+}
 
-    document.addEventListener('DOMContentLoaded' , function(){
+function initNavbarScroll() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+}
 
-      const loginButton = document.getElementById("loginButton");
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
-      const userEmail = localStorage.getItem('userEmail');
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.menu-item').forEach(item => {
+    const select = item.querySelector('.choice');
+    const priceDisplay = item.querySelector('.price');
+    if (!select || !priceDisplay) return;
 
-      if (isLoggedIn == 'true' && userEmail){
-        loginButton.textContent = "Log Out";
-        loginButton.href = '#';
-        loginButton.addEventListener('click' , function(e){
-          e.preventDefault();
-          const shouldLogout = confirm(t("Do you want to log out?"));
-          if(shouldLogout){
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userEmail');
-            localStorage.removeItem('userId');
-            location.reload();
-  
-          }
-  
-        })
-      } 
-
-    })
-
-
-    window.addEventListener('load', () => {
-    document.body.classList.remove('fade-out');
-    document.body.classList.add('fade-in');
-
-  });
-
-
-   document.addEventListener("DOMContentLoaded", function () {
- 
-    document.querySelectorAll('.menu-item').forEach(item => {
-      const select = item.querySelector('.choice');
-      const priceDisplay = item.querySelector('.price');
-
-          if (!select || !priceDisplay) return;
-    
-      function updatePrice() {
+    function updatePrice() {
       let price = 0;
       if (select.value === "single") {
-        price = parseInt(select.dataset.single);
+        price = parseFloat(select.dataset.single);
       } else if (select.value === "double") {
-        price = parseInt(select.dataset.double);
+        price = parseFloat(select.dataset.double);
       }
-      priceDisplay.innerText =  `$${price}.00`;
+      priceDisplay.innerText = `$${price.toFixed(2)}`;
     }
 
     select.addEventListener('change', updatePrice);
     updatePrice();
-      });
-    });
+  });
+});
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains('add-to-cart')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  });
 
-    document.addEventListener('DOMContentLoaded' , () => {
-      // Test: Simple click prevention first
-      document.addEventListener('click', function(e) {
-        if (e.target && e.target.classList && e.target.classList.contains('add-to-cart')) {
-          console.log('Button clicked - preventing default');
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-      });
-      
-      const favButtons = document.querySelectorAll('.add-to-cart');
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', async function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-      favButtons.forEach(button => {
-        button.addEventListener('click' , async function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          
-          const isLoggedIn = localStorage.getItem('isLoggedIn');
-          if(!isLoggedIn || isLoggedIn !== 'true'){
-            showNotification(t('Please log in to add favorites'), 'error');
-            return;
-          }
-
-          const userId = localStorage.getItem('userId');
-          if(!userId){
-            alert(t('User ID not found'));
-            return;
-          }
-
-          const itemId = button.getAttribute('data-item-id') || '1';
-          try{
-            const response = await fetch('http://localhost:3000/favorites/add' , {
-              method: 'POST' , 
-              headers: {
-                'Content-Type': 'application/json' , 
-              } , 
-              body: JSON.stringify({
-                userId: userId,
-                itemId: itemId
-              })
-            });
-            const data = await response.json();
-            
-            if(response.status === 409) {
-              showNotification(t('Item already in favorites!'), 'info');
-              button.textContent = t('Already Favorited!');
-              button.style.backgroundColor = '#27ae60';
-              return;
-            }
-            
-            if(data.success){
-              showNotification(t('Added to favorites!'), 'success');
-              button.textContent = t('Added to Favorites!');
-              button.style.backgroundColor = '#27ae60';
-            } else {
-              showNotification(t('Failed to add to favorites'), 'error');
-            }
-          } catch (error){
-            console.error('Error:', error);
-            showNotification(t('Error adding to favorites'), 'error');
-          }
-        })
-      })
-    });
-   
-
-  // Notification function for better user experience
-  function showNotification(message, type = 'info') {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-      position: fixed;
-      top: 100px;
-      right: 20px;
-      padding: 15px 20px;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      animation: slideIn 0.3s ease;
-      ${type === 'success' ? 'background-color: #27ae60;' : 
-        type === 'error' ? 'background-color: #e74c3c;' : 
-        'background-color: #3498db;'}
-    `;
-
-    // Add CSS animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (!isLoggedIn || isLoggedIn !== 'true') {
+        showNotification(t('Please log in to add favorites'), 'error');
+        return;
       }
-    `;
-    document.head.appendChild(style);
 
-    document.body.appendChild(notification);
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        alert(t('User ID not found'));
+        return;
+      }
 
-    // Remove notification after 3 seconds
-    setTimeout(() => {
-      notification.remove();
-    }, 3000);
-  }
+      const itemId = button.getAttribute('data-item-id') || '1';
+      try {
+        const response = await fetch('http://localhost:3000/favorites/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId, itemId })
+        });
+        const data = await response.json();
 
+        if (response.status === 409) {
+          showNotification(t('Item already in favorites!'), 'info');
+          button.textContent = t('Already Favorited!');
+          button.classList.add('favorited');
+          return;
+        }
+
+        if (data.success) {
+          showNotification(t('Added to favorites!'), 'success');
+          button.textContent = t('Added to Favorites!');
+          button.classList.add('favorited');
+        } else {
+          showNotification(t('Failed to add to favorites'), 'error');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        showNotification(t('Error adding to favorites'), 'error');
+      }
+    });
+  });
+});
+
+function showNotification(message, type = 'info') {
+  document.querySelectorAll('.notification').forEach(n => n.remove());
+
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+
+  setTimeout(() => notification.remove(), 3200);
+}
