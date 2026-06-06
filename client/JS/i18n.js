@@ -36,8 +36,17 @@
     "What Our Customers Say": "نظر مشتریان ما",
     "Real feedback from guests who keep coming back":
       "بازخوردهای واقعی از مهمانانی که همیشه برمی‌گردند",
-    "The Margherita is incredible. Fresh ingredients and the crust is perfect every single time we visit.":
-      "مارگاریتا فوق‌العاده است. مواد اولیه تازه و خمیر پیتزا هر بار عالی است.",
+    "The Kolbe Special is incredible. Fresh ingredients and the crust is perfect every single time we visit.":
+      "پیتزا مخصوص کلبه فوق‌العاده است. مواد اولیه تازه و خمیر پیتزا هر بار عالی است.",
+    "The Chorizo burger blew my mind. Nothing else like it in Tehran — spicy, juicy, and perfect!":
+      "برگر چوریتسو حسابی شوکم کرد. در تهران همتایی ندارد — تند، آبدار و بی‌نقص!",
+    "Every Friday night we come here. The hot dogs and fries are what our kids dream about all week!":
+      "هر شب جمعه اینجاییم. هات‌داگ و سیب‌زمینی‌هایشان رویای بچه‌هامان طول هفته است!",
+    "Amazing atmosphere and even better food. The meat and mushroom pizza is an absolute dream!":
+      "فضایی شگفت‌انگیز و غذایی حتی بهتر. پیتزا گوشت و قارچ واقعاً یک رویاست!",
+    "First-Time Visitor": "اولین بار مهمان",
+    "Weekly Regular": "مشتری هفتگی",
+    "Food Blogger": "بلاگر غذا",
     "Best pizza in Tehran! The cozy atmosphere makes it our family's favorite weekend dinner spot.":
       "بهترین پیتزای تهران! فضای دنج آن، محل مورد علاقه خانواده ما برای شام آخر هفته شده.",
     "Kolbe Special Pizza is a must-try. Fast service, friendly staff, and flavors you won't forget.":

@@ -425,51 +425,28 @@ a {
 .reviews-marquee {
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 6%,
-    #000 94%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000 6%,
-    #000 94%,
-    transparent
-  );
+  direction: ltr;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
 
 .reviews-track {
   display: flex;
+  direction: ltr;
   gap: 1.25rem;
   width: max-content;
   padding: 0.5rem 0;
-  animation: reviews-marquee 35s linear infinite;
   will-change: transform;
 }
 
-.reviews-marquee:hover .reviews-track {
-  animation-play-state: paused;
-}
-
-@keyframes reviews-marquee {
-  from {
-    transform: translateX(-50%);
+@media (hover: hover) {
+  .reviews-marquee:hover .reviews-track {
+    /* pause handled by JS on desktop */
   }
-  to {
-    transform: translateX(0);
-  }
-}
-
-[dir="rtl"] .reviews-track {
-  animation-direction: reverse;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reviews-track {
-    animation: none;
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
@@ -479,6 +456,7 @@ a {
   .reviews-marquee {
     mask-image: none;
     -webkit-mask-image: none;
+    overflow: visible;
   }
 
   .review-card[aria-hidden="true"] {
@@ -700,16 +678,36 @@ body h1 {
   }
 
   .reviews {
-    padding: 2.5rem 0;
+    padding: 2.5rem 0 3rem;
+  }
+
+  .reviews-header {
+    margin-bottom: 1.5rem;
+    padding: 0 1.25rem;
+  }
+
+  .reviews-header h2 {
+    font-size: clamp(1.65rem, 6vw, 2.25rem);
+  }
+
+  .reviews-header p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .reviews-marquee {
+    mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 97%, transparent);
   }
 
   .review-card {
-    flex: 0 0 min(85vw, 300px);
-    width: min(85vw, 300px);
+    flex: 0 0 min(80vw, 300px);
+    width: min(80vw, 300px);
   }
 
-  .reviews-track {
-    animation-duration: 28s;
+  .review-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
   }
 }
 
@@ -832,6 +830,33 @@ body h1 {
   .page-header p {
     font-size: 0.9rem;
     padding: 0 0.5rem;
+  }
+
+  .reviews {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .reviews-header h2 {
+    font-size: 1.55rem;
+  }
+
+  .review-card {
+    flex: 0 0 min(86vw, 280px);
+    width: min(86vw, 280px);
+    padding: 1.25rem;
+  }
+
+  .review-stars {
+    margin-bottom: 0.65rem;
+  }
+
+  .review-text {
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-author {
+    padding-top: 0.85rem;
   }
 
   .site-footer,

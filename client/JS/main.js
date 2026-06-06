@@ -171,3 +171,56 @@ function showNotification(message, type = 'info') {
 
   setTimeout(() => notification.remove(), 3200);
 }
+
+// ── Infinite reviews marquee (rAF-driven, no CSS animation) ──
+function initReviewsMarquee() {
+  const track = document.querySelector('.reviews-track');
+  if (!track) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Clone all original cards once for seamless loop
+  const origCards = Array.from(track.children);
+  origCards.forEach(function(card) {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+
+  let x = 0;
+  let halfWidth = 0;
+  let paused = false;
+  const SPEED = 0.5; // px per frame
+
+  // Pause on desktop hover only
+  const marquee = track.closest('.reviews-marquee');
+  if (marquee) {
+    marquee.addEventListener('mouseenter', function() { paused = true; });
+    marquee.addEventListener('mouseleave', function() { paused = false; });
+  }
+
+  function tick() {
+    if (!paused && halfWidth > 0) {
+      x -= SPEED;
+      // When we've scrolled exactly one full set, snap back seamlessly
+      if (x <= -halfWidth) x += halfWidth;
+      track.style.transform = 'translateX(' + x + 'px)';
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function measure() {
+    halfWidth = track.scrollWidth / 2;
+    if (halfWidth < 10) {
+      // Layout not ready yet, retry
+      setTimeout(measure, 50);
+      return;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Wait for fonts + layout before measuring
+  var ready = document.fonts ? document.fonts.ready : Promise.resolve();
+  ready.then(function() { setTimeout(measure, 60); });
+}
+
+document.addEventListener('DOMContentLoaded', initReviewsMarquee);
