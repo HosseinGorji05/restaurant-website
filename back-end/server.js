@@ -307,13 +307,13 @@ const menuItems = {
   },
   119: {
     name: 'Regular Burger',
-    price: 250000,
+    price: 500000,
     image: 'images/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg',
     description: 'Grilled beef',
   },
   120: {
     name: 'Cheeseburger',
-    price: 270000,
+    price: 550000,
     image: 'images/cheezburger.jpg',
     description: 'Melted cheese, Fresh beef',
   },
