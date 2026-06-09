@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             try {
                 console.log('Making login request...');
-                const response = await fetch(`${API_BASE}/api/login`, {
+                const response = await fetch(`${window.API_BASE}/api/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 console.log('Making signup request...');
-                const response = await fetch(`${API_BASE}/api/register`, {
+                const response = await fetch(`${window.API_BASE}/api/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -32,8 +32,14 @@ app.get('/', (req, res) => {
   res.redirect('/client/index.html');
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.get('/api/health', async (req, res) => {
+  try {
+    await db.query('SELECT 1');
+    res.json({ ok: true, database: 'connected' });
+  } catch (err) {
+    console.error('Health check failed:', err.message);
+    res.status(500).json({ ok: false, database: 'error', message: err.message });
+  }
 });
 
 app.post('/api/register', async (req, res) => {
@@ -391,4 +397,8 @@ const menuItems = {
 
 app.get('/menu/items', (req, res) => {
   res.json({ success: true, items: menuItems });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
