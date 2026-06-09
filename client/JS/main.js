@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const itemId = button.getAttribute('data-item-id') || '1';
       try {
-        const response = await fetch('http://localhost:3000/favorites/add', {
+        const response = await fetch(`${API_BASE}/favorites/add`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId, itemId })

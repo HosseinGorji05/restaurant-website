@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded' , function(){
 
 async function fetchUserFavorites(userId) {
   try{
-    const response = await fetch(`http://localhost:3000/favorites/user/${userId}`);
+    const response = await fetch(`${API_BASE}/favorites/user/${userId}`);
     const data = await response.json();
     console.log("Favorite data: " ,  data);
 
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded' , () => {
            const favoriteId = e.target.getAttribute('data-favorite-id');
 
            try{
-             const response = await fetch(`http://localhost:3000/favorites/${favoriteId}` , {
+             const response = await fetch(`${API_BASE}/favorites/${favoriteId}`, {
                method: 'DELETE' , 
                headers: {
                  'Content-Type' : 'application/json' , 

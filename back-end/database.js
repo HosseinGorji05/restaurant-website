@@ -1,25 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 
-const db = new sqlite3.Database(path.join(__dirname, 'yourDatabase.db'));
+const { Pool } = require('pg');
 
-db.serialize(() => {
-  db.run(`CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  )`);
-  
-db.run(`CREATE TABLE IF NOT EXISTS user_favorites (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,      
-    user_id INTEGER NOT NULL, 
-    menu_item_id INTEGER NOT NULL, 
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    UNIQUE(user_id, menu_item_id)
-  )`)
-  
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
 });
-module.exports = db;
 
+function toPgSql(sql) {
+  let i = 0;
+  return sql.replace(/\?/g, () => `$${++i}`);
+}
+
+async function query(sql, params = []) {
+  return pool.query(toPgSql(sql), params);
+}
+
+module.exports = { query, pool };
