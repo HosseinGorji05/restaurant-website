@@ -2,6 +2,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 
 const express = require('express');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const db = require('./database');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -9,6 +10,22 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const pendingRegistrations = new Map();
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many attempts. Please try again in 15 minutes.' },
+});
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests. Please try again later.' },
+});
 
 const allowedOrigins = [
   'https://www.pizzakolbe.com',
@@ -25,7 +42,10 @@ app.use(cors({
   },
 }));
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
+app.use('/api/login', authLimiter);
+app.use('/api/register', authLimiter);
+app.use('/favorites', apiLimiter);
 app.use(express.static(path.join(__dirname, '..')));
 
 app.get('/', (req, res) => {
@@ -38,7 +58,7 @@ app.get('/api/health', async (req, res) => {
     res.json({ ok: true, database: 'connected' });
   } catch (err) {
     console.error('Health check failed:', err.message);
-    res.status(500).json({ ok: false, database: 'error', message: err.message });
+    res.status(500).json({ ok: false, database: 'error' });
   }
 });
 
@@ -399,6 +419,6 @@ app.get('/menu/items', (req, res) => {
   res.json({ success: true, items: menuItems });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
