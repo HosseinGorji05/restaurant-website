@@ -413,6 +413,108 @@ const menuItems = {
     image: 'images/salad-fasl-min.jpg',
     description: 'Seasonal vegetables mix (lettuce, cucumber, tomato, carrot), Light diet friendly, Fresh and healthy',
   },
+  137: {
+    name: 'Lentil Stew',
+    price: 35000,
+    image: 'images/meat-and-mushroom.jpg',
+    description: 'Hot breakfast, Traditional, Hearty',
+  },
+  138: {
+    name: 'Bean Stew',
+    price: 35000,
+    image: 'images/meat-and-mushroom.jpg',
+    description: 'Hot breakfast, Traditional, Hearty',
+  },
+  139: {
+    name: 'Omelet',
+    price: 35000,
+    image: 'images/img_682617.jpeg',
+    description: 'Egg breakfast, Fresh, Classic',
+  },
+  140: {
+    name: 'Fried Egg',
+    price: 30000,
+    image: 'images/img_682617.jpeg',
+    description: 'Egg breakfast, Sunny side up, Classic',
+  },
+  141: {
+    name: 'Bread and Clotted Cream',
+    price: 30000,
+    image: 'images/calindairy-blog-garlic-bread-030920-002.webp',
+    description: 'Bread and dairy, Traditional, Creamy',
+  },
+  142: {
+    name: 'Bread and Cheese',
+    price: 20000,
+    image: 'images/calindairy-blog-garlic-bread-030920-002.webp',
+    description: 'Bread and dairy, Simple, Classic',
+  },
+  143: {
+    name: 'Tea',
+    price: 10000,
+    image: 'images/busters-home_hero-video-fallback_thumbnail.jpg',
+    description: 'Hot drink, Fresh brewed, Classic',
+  },
+  144: {
+    name: 'Bean Stew with Mushrooms',
+    price: 40000,
+    image: 'images/meat-and-mushroom.jpg',
+    description: 'Hot breakfast, With mushrooms, Hearty',
+  },
+  145: {
+    name: 'Tea with Dates',
+    price: 15000,
+    image: 'images/busters-home_hero-video-fallback_thumbnail.jpg',
+    description: 'Hot drink, With dates, Traditional',
+  },
+  146: {
+    name: 'Bread, Butter and Jam',
+    price: 25000,
+    image: 'images/calindairy-blog-garlic-bread-030920-002.webp',
+    description: 'Bread and dairy, Sweet, Classic',
+  },
+  147: {
+    name: 'Turkish Coffee',
+    price: 10000,
+    image: 'images/busters-home_hero-video-fallback_thumbnail.jpg',
+    description: 'Hot drink, Strong, Traditional',
+  },
+  148: {
+    name: 'Boiled Egg',
+    price: 30000,
+    image: 'images/img_682617.jpeg',
+    description: 'Egg breakfast, Soft boiled, Classic',
+  },
+  149: {
+    name: 'Kolbe Special Cake',
+    price: null,
+    image: 'images/1294828.jpg',
+    description: 'House specialty, Fresh baked',
+  },
+  150: {
+    name: 'Chocolate Cake',
+    price: null,
+    image: 'images/1294828.jpg',
+    description: 'Fresh baked, Rich',
+  },
+  151: {
+    name: 'Sausage and Egg',
+    price: 45000,
+    image: 'images/132638092866500.jpg',
+    description: 'Egg breakfast, Hearty, Classic',
+  },
+  152: {
+    name: 'Tea with Rock Candy',
+    price: 10000,
+    image: 'images/busters-home_hero-video-fallback_thumbnail.jpg',
+    description: 'Hot drink, With rock candy, Traditional',
+  },
+  153: {
+    name: 'Carrot Cake',
+    price: null,
+    image: 'images/1294828.jpg',
+    description: 'Fresh baked, Homemade',
+  },
 };
 
 app.get('/menu/items', (req, res) => {
